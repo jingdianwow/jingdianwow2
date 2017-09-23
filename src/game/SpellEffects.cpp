@@ -5400,6 +5400,9 @@ void Spell::EffectSummonCritter(SpellEffectIndex eff_idx)
 				case 30197:
 					pet_entry = 61010;
 					break;
+				case 90106:
+					pet_entry = 7547;
+					break;
 				default:
 					pet_entry = m_spellInfo->EffectMiscValue[eff_idx];
 					break;
