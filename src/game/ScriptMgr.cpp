@@ -2161,6 +2161,11 @@ bool ScriptMgr::OnGossipSelect(Player* pPlayer, GameObject* pGameObject, uint32 
         return m_pOnGOGossipSelect != NULL && m_pOnGOGossipSelect(pPlayer, pGameObject, sender, action);
 }
 
+bool ScriptMgr::OnGossipItemSelect(Player *pPlayer, Item *pItem, uint32 sender, uint32 action)
+{
+	return m_pOnGossipItemSelect != NULL && m_pOnGossipItemSelect(pPlayer, pItem, sender, action);
+}
+
 bool ScriptMgr::OnQuestAccept(Player* pPlayer, Creature* pCreature, Quest const* pQuest)
 {
     return m_pOnQuestAccept != NULL && m_pOnQuestAccept(pPlayer, pCreature, pQuest);
@@ -2284,6 +2289,7 @@ ScriptLoadResult ScriptMgr::LoadScriptLibrary(const char* libName)
     GET_SCRIPT_HOOK_PTR(m_pOnGossipHello,              "GossipHello");
     GET_SCRIPT_HOOK_PTR(m_pOnGOGossipHello,            "GOGossipHello");
     GET_SCRIPT_HOOK_PTR(m_pOnGossipSelect,             "GossipSelect");
+	GET_SCRIPT_HOOK_PTR(m_pOnGossipItemSelect, "GossipItemSelect");
     GET_SCRIPT_HOOK_PTR(m_pOnGOGossipSelect,           "GOGossipSelect");
     GET_SCRIPT_HOOK_PTR(m_pOnGossipSelectWithCode,     "GossipSelectWithCode");
     GET_SCRIPT_HOOK_PTR(m_pOnGOGossipSelectWithCode,   "GOGossipSelectWithCode");
@@ -2350,6 +2356,7 @@ void ScriptMgr::UnloadScriptLibrary()
     m_pGetGODialogStatus        = NULL;
     m_pOnGOUse                  = NULL;
     m_pOnItemUse                = NULL;
+	m_pOnGossipItemSelect = NULL;
     m_pOnAreaTrigger            = NULL;
     m_pOnProcessEvent           = NULL;
     m_pOnEffectDummyCreature    = NULL;
