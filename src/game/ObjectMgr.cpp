@@ -2748,7 +2748,7 @@ void ObjectMgr::DistributeRankPoints(uint32 team, uint32 dateBegin, bool flush /
 		last_RP = RP;
 
 		itr->rpEarning = MaNGOS::Honor::CalculateRpEarning(itr->GetInfo()->honorPoints, scores);
-		RP = MaNGOS::Honor::CalculateRpDecay(itr->rpEarning, RP);
+		RP = MaNGOS::Honor::CalculateRpDecay(itr->rpEarning, RP, DK, MaNGOS::Honor::DishonorableKillPoints(level));
 		RP = finiteAlways(RP) >= sWorld.getConfig(CONFIG_FLOAT_HONOR_PLAYER_MAX) ? sWorld.getConfig(CONFIG_FLOAT_HONOR_PLAYER_MAX) : finiteAlways(RP);
 		if (flush)
 		{

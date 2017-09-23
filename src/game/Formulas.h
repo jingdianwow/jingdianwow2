@@ -180,19 +180,23 @@ namespace MaNGOS
             return (sc.FY[i] - sc.FY[i - 1]) * (CP - sc.FX[i - 1]) / (sc.FX[i] - sc.FX[i - 1]) + sc.FY[i - 1];
         }
 
-		inline float CalculateRpDecay(float rpEarning, float RP)
+		inline float CalculateRpDecay(float rpEarning, float RP, float DK, float DishonorableKill)
 		{
-			float Decay = floor((0.2f * RP) + 0.5f);
-			float Delta = rpEarning - Decay;
-			if (Delta < 0)
+			float Decay = rpEarning - floor((0.2f * RP) + 0.5f);
+			float Delta;
+			float Decay_limit;
+			if (RP < 25000)
 			{
-				Delta = Delta / 2;
+				Decay_limit = 0.0f - RP * 0.1f;
 			}
-			if (Delta < -2500)
+			else
 			{
-				Delta = -2500;
+				Decay_limit = -2500.0f;
 			}
-			return RP + Delta;
+
+			Delta = Decay < Decay_limit ? Decay_limit : Decay;
+
+			return RP + Delta - DK * DishonorableKill > 0 ? RP + Delta - DK * DishonorableKill : 0;
 		}
 
         inline float DishonorableKillPoints(int level)
@@ -206,10 +210,8 @@ namespace MaNGOS
                 result = result + 21 + 3.2 * (level - 41);
             if (level >= 51)
                 result = result + 50 + 4 * (level - 50);
-			if (result > 100)
-				return 100.0;
-			else
-				return result;
+
+			return result * 2;
         }
 
         inline float HonorableKillPoints(Player* killer, Player* victim, uint32 groupsize)
