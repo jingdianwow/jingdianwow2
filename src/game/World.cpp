@@ -843,7 +843,9 @@ void World::LoadConfigSettings(bool reload)
 	setConfig(CONFIG_BOOL_OUTDOORPVP_ZG_ENABLED,                       "OutdoorPvP.ZUGEnabled", true);
 	setConfig(CONFIG_BOOL_OUTDOORPVP_FX_ENABLED,                       "OutdoorPvP.FXEnabled", true);
 	setConfig(CONFIG_BOOL_OUTDOORPVP_EY_ENABLED,                       "OutdoorPvP.EYEnabled", true);
-
+	setConfig(CONFIG_BOOL_AOSHAN, "Command.aoshan", false);
+	setConfig(CONFIG_BOOL_ZHANGE, "Command.ZhanGe", false);
+	setConfig(CONFIG_BOOL_ALX, "Command.ALX", false);
 	setConfig(CONFIG_BOOL_FEIJI_SHUNFEI,      "FeiJi.ShunFei", false);
 
 	setConfig(CONFIG_BOOL_TAQ_KAIENRENWU, "Taq.KaiMenRenWu", false);
