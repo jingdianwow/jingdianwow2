@@ -57,14 +57,22 @@ class AuthSocket: public BufferedSocket
 
         void _SetVSFields(const std::string& rI);
 
-    private:
+private:
+	enum eStatus
+	{
+		STATUS_CHALLENGE,
+		STATUS_LOGON_PROOF,
+		STATUS_RECON_PROOF,
+		STATUS_PATCH,      // unused in CMaNGOS
+		STATUS_AUTHED,
+		STATUS_CLOSED
+	};
+	BigNumber N, s, g, v;
+	BigNumber b, B;
+	BigNumber K;
+	BigNumber _reconnectProof;
 
-        BigNumber N, s, g, v;
-        BigNumber b, B;
-        BigNumber K;
-        BigNumber _reconnectProof;
-
-        bool _authed;
+	eStatus _status;
 
         std::string _login;
         std::string _safelogin;
