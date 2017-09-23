@@ -1856,6 +1856,10 @@ void Aura::HandleAuraTransform(bool apply, bool Real)
 			{
 				if (spell->m_CastItem)
 				{
+					if (((Player*)target)->InBattleGround())
+					{
+						return;
+					}
 					switch (spell->m_CastItem->GetEntry())
 					{
 					case 30065:
