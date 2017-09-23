@@ -499,6 +499,30 @@ bool ChatHandler::HandleReloadLootTemplatesFishingCommand(char* /*args*/)
     return true;
 }
 
+bool ChatHandler::HandleReloadGameobjectTemplateCommand(char* /*args*/)
+{
+	sLog.outString("Re-Loading gameobject_template Tables... (`gameobject_template`)");
+	sObjectMgr.LoadGameobjectInfo();
+	PSendSysMessage("DB table `gameobject_template` reloaded.");
+	return true;
+}
+
+bool ChatHandler::HandleReloadItemTemplateCommand(char* /*args*/)
+{
+	sLog.outString("Re-Loading item_template Tables... (`item_template`)");
+	sObjectMgr.LoadItemPrototypes();
+	PSendSysMessage("DB table `item_template` reloaded.");
+	return true;
+}
+
+bool ChatHandler::HandleReloadCreatureTemplateCommand(char* /*args*/)
+{
+	sLog.outString("Re-Loading creature_template Tables... (`creature_template`)");
+	sObjectMgr.LoadCreatureTemplates();
+	PSendSysMessage("DB table `creature_template` reloaded.");
+	return true;
+}
+
 bool ChatHandler::HandleReloadLootTemplatesGameobjectCommand(char* /*args*/)
 {
     sLog.outString("Re-Loading Loot Tables... (`gameobject_loot_template`)");
