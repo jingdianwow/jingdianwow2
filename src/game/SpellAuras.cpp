@@ -3737,6 +3737,11 @@ void Aura::HandlePeriodicTriggerSpell(bool apply, bool /*Real*/)
 
     Unit* target = GetTarget();
 
+	if (!target)
+	{
+		return;
+	}
+
     if (!apply)
     {
         switch (GetId())
@@ -3754,12 +3759,29 @@ void Aura::HandlePeriodicTriggerSpell(bool apply, bool /*Real*/)
             case 29213:                                     // Curse of the Plaguebringer
                 if (m_removeMode != AURA_REMOVE_BY_DISPEL)
                     // Cast Wrath of the Plaguebringer if not dispelled
-                    target->CastSpell(target, 29214, true, 0, this);
-                return;
-            default:
-                break;
+                    target->CastSpell(target, 29214, true, 0, this); 
+				return;
+			default:
+				break;
         }
     }
+	else
+	{
+		switch (GetId())
+		{
+		case 6474:  // µØ¸¿Í¼ÌÚ
+			target->CastSpell(target, 3600, true, 0, this);
+			return;
+		case 8167:  // Çå¶¾Í¼ÌÚ
+			target->CastSpell(target, 8168, true, 0, this);
+			return;
+		case 8179:  // ¸ù»ùÍ¼ÌÚ
+			target->CastSpell(target, 8178, true, 0, this);
+			return;
+		default:
+			break;
+		}
+	}
 }
 
 void Aura::HandlePeriodicTriggerSpellWithValue(bool apply, bool /*Real*/)
