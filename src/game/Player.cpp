@@ -19452,7 +19452,7 @@ bool Player::AddItem(uint32 itemId, uint32 count)
 
 	if (count == 0 || dest.empty())
 	{
-		sWorld.SendWorldText(LANG_ITEM_CANNOT_CREATE, itemId, noSpaceForCount);
+		//sWorld.SendWorldText(LANG_ITEM_CANNOT_CREATE, itemId, noSpaceForCount);
 		return false;
 	}
 

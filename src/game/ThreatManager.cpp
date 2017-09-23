@@ -141,19 +141,23 @@ void HostileReference::updateOnlineStatus()
     // ref is valid
     // target is no player or not gamemaster
     // target is not in flight
-    if (isValid() &&
-            ((getTarget()->GetTypeId() != TYPEID_PLAYER || !((Player*)getTarget())->isGameMaster()) ||
-             !getTarget()->IsTaxiFlying()))
+    if (isValid() && ((getTarget()->GetTypeId() != TYPEID_PLAYER || !((Player*)getTarget())->isGameMaster()) || !getTarget()->IsTaxiFlying()))
     {
-        Creature* creature = (Creature*) getSourceUnit();
-        online = getTarget()->isInAccessablePlaceFor(creature);
-        if (!online)
-        {
-            if (creature->AI()->canReachByRangeAttack(getTarget()))
-                online = true;                              // not accessable but stays online
-        }
-        else
-            accessible = true;
+		if (Creature* creature = (Creature*)getSourceUnit())
+		{
+			online = getTarget()->isInAccessablePlaceFor(creature);
+			if (!online)
+			{
+				if (creature->AI()->canReachByRangeAttack(getTarget()))
+				{
+					online = true;                              // not accessable but stays online
+				}					
+			}
+			else
+			{
+				accessible = true;
+			}
+		}
     }
     setAccessibleState(accessible);
     setOnlineOfflineState(online);
