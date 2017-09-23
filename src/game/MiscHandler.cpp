@@ -41,6 +41,7 @@
 #include "OutdoorPvP/OutdoorPvP.h"
 #include "Pet.h"
 #include "SocialMgr.h"
+#include "Config/Config.h"
 
 void WorldSession::HandleRepopRequestOpcode(WorldPacket& recv_data)
 {
@@ -254,14 +255,14 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recv_data)
         data << uint32(pzoneid);                            // player zone id
     }
 
-    //data.put(0, displaycount);                              // insert right count, count displayed
+    data.put(0, displaycount);                              // insert right count, count displayed
     //data.put(4, matchcount);                                // insert right count, count of matches
-	if (displaycount >= sWorld.getConfig(CONFIG_BOOL_MAXDUMMY) && (sWorld.getConfig(CONFIG_BOOL_ON) == true))
+	if (displaycount >= sConfig.GetIntDefault("MaxDummy", 30) && (sConfig.GetIntDefault("Dummy.On.Off", 1) == 1))
 	{
 		if (level_max < 60)
-			data.put(4, matchcount + sWorld.getConfig(CONFIG_BOOL_ADDNUMBERDUMMY1));
+			data.put(4, matchcount + sConfig.GetIntDefault("AddNumberDummy1", 200));
 		else
-			data.put(4, matchcount + sWorld.getConfig(CONFIG_BOOL_ADDNUMBERDUMMY));
+			data.put(4, matchcount + sConfig.GetIntDefault("AddNumberDummy", 200));
 	}
 	else
 	{
