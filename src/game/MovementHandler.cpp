@@ -660,7 +660,7 @@ void WorldSession::HandleMoveKnockBackAck(WorldPacket& recv_data)
     recv_data >> Unused<uint32>();                          // knockback packets counter
     recv_data >> movementInfo;
 
-    if (!VerifyMovementInfo(movementInfo, guid))
+    if (guid && !VerifyMovementInfo(movementInfo, guid))
         return;
 
 	HandleMoverRelocation(movementInfo, recv_data.GetOpcode());
