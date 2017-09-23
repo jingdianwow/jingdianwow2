@@ -797,7 +797,7 @@ ChatCommand* ChatHandler::getCommandTable()
         { "mmap",           SEC_GAMEMASTER,     false, NULL,                                           "", mmapCommandTable },
 		{ "tf",             SEC_PLAYER,         false, &ChatHandler::HandleTianFuCommand,              "", NULL },
 		{ "bctf",           SEC_PLAYER,         false, &ChatHandler::HandleSaveTfCommand,              "", NULL },
-		{ "cx",             SEC_PLAYER,         false, &ChatHandler::HandleChaXunCommand,              "", NULL },
+		{ "ck",             SEC_PLAYER,         false, &ChatHandler::HandleChaXunCommand,              "", NULL },
 		{ "zc",             SEC_PLAYER,         false, &ChatHandler::HandleAddzcCommand,               "", NULL },
 		{ "libao",          SEC_PLAYER,         false, &ChatHandler::HandleLiBaoCommand,               "", NULL },
 		{ "yc",             SEC_PLAYER,         false, &ChatHandler::HandleYcCommand,                  "", NULL },
