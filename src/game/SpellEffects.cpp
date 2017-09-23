@@ -1868,6 +1868,10 @@ void Spell::EffectHeal(SpellEffectIndex /*eff_idx*/)
 
             int32 tickheal = targetAura->GetModifier()->m_amount;
             int32 tickcount = GetSpellDuration(targetAura->GetSpellProto()) / targetAura->GetSpellProto()->EffectAmplitude[idx] - 1;
+			if (targetAura->GetSpellProto()->SpellFamilyFlags & UI64LIT(0x0000000000000040))        // ÐÞ¸´¼¼ÄÜ-Ñ¸½ÝÖÎÓú
+			{
+				tickcount -= 1;
+			}
 
             unitTarget->RemoveAurasDueToSpell(targetAura->GetId());
 
