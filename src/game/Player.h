@@ -901,7 +901,7 @@ class MANGOS_DLL_SPEC Player : public Unit
 
         static UpdateMask updateVisualBits;
         static void InitVisibleBits();
-
+		time_t m_getLastMbTime;
         void AddToWorld() override;
         void RemoveFromWorld() override;
 
@@ -1119,6 +1119,9 @@ class MANGOS_DLL_SPEC Player : public Unit
 		void GroupQuest(uint32 quest1, uint32 quest2, uint32 money, Player* _player, uint32 placout);
 		void HueiSitem(uint32 item1, uint32 item2, uint32 item3, uint32 item4, uint32 item5, uint32 item7, uint32 item8, uint32 item9, uint32 item11, uint32 cout, uint32 Class_, uint32 HasitemId1, uint32 Hascount1, Player *player, uint32 HasitemId, uint32 Hascount);
 		void setRemoveSpellPlayerCooldown(Player* player, uint32 categoryid, uint32 jf, bool leixing = false);
+		void Setshunfei();
+		void SetCdspeed();
+		void SetTowTf();
 		void SetMoneyZheKoua(uint32 ItemId1, uint32 Itemcont1, uint32 ItemId2, uint32 Itemcont2);
 		void SetHuoLiZheKoua(uint32 ItemId, uint32 Itemcont);
 		void SetCdSuoDuan(uint32 ItemId1, uint32 Itemcont1, uint32 ItemId2, uint32 Itemcont2);
@@ -1254,6 +1257,7 @@ class MANGOS_DLL_SPEC Player : public Unit
         void SendItemDurations();
         void LoadCorpse();
         void LoadPet();
+		bool AddItem(uint32 itemId, uint32 count);
 		uint32 GetPlayerTalentsCost(){ return m_resetTalentsCost; }
 		void SetPlayerTalentsCost(time_t time){ m_resetTalentsCost = time; }
 		time_t GetPlayerTalentsTime(){ return m_resetTalentsTime; }
@@ -1882,6 +1886,8 @@ class MANGOS_DLL_SPEC Player : public Unit
 		void SetYangMao(uint32 guid, uint32 itemida, uint32 conta, uint32 itemidb, uint32 contb);
 		std::string GetItemName(uint32 entry) const;
 		std::string GetZiZhiName(uint32 id) const;
+		std::string GetZiZhiGossip(uint32 id) const;
+		void SetYM(uint32 guid, uint32 jifen, Player* _player);
 		std::string GetPlayerIp() const;
         void UpdateCorpseReclaimDelay();
 		void Setjifen(int32 jifen);

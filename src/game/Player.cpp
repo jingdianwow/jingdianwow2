@@ -62,7 +62,7 @@
 #include "SQLStorages.h"
 #include "AccountMgr.h"
 #include "AutoAIoncharm/AutoAIoncharm.h"
-
+#include "WorldSession.h"
 #include <cmath>
 
 #define ZONE_UPDATE_INTERVAL (1*IN_MILLISECONDS)
@@ -360,7 +360,7 @@ UpdateMask Player::updateVisualBits;
 Player::Player(WorldSession* session): Unit(), m_mover(this), m_camera(this), m_reputationMgr(this)
 {
     m_transport = 0;
-
+	m_getLastMbTime = time(NULL);
     m_speakTime = 0;
 	m_speakPlayerTime = 0;
     m_speakCount = 0;
@@ -19428,6 +19428,38 @@ void Player::RemoveItemDurations(Item* item)
     }
 }
 
+bool Player::AddItem(uint32 itemId, uint32 count)
+{
+	uint32 noSpaceForCount = 0;
+
+	// check space and find places
+	ItemPosCountVec dest;
+	uint8 msg = CanStoreNewItem(NULL_BAG, NULL_SLOT, dest, itemId, count, &noSpaceForCount);
+	if (msg != EQUIP_ERR_OK)                                // convert to possible store amount
+	{
+		count = noSpaceForCount;
+	}
+
+	if (count == 0 || dest.empty())
+	{
+		sWorld.SendWorldText(LANG_ITEM_CANNOT_CREATE, itemId, noSpaceForCount);
+		return false;
+	}
+
+	Item* item = StoreNewItem(dest, itemId, true, Item::GenerateItemRandomPropertyId(itemId));
+
+	if (item)
+	{
+		SendNewItem(item, count, true, false);
+	}
+	else
+	{
+		return false;
+	}
+
+	return true;
+}
+
 void Player::AddItemDurations(Item* item)
 {
     if (item->GetUInt32Value(ITEM_FIELD_DURATION))
@@ -21053,6 +21085,19 @@ void Player::SetSafePass(std::string canshu)
 	LoginDatabase.CommitTransaction();
 }
 
+std::string Player::GetZiZhiGossip(uint32 id) const
+{
+	QueryResult* result = LoginDatabase.PQuery("SELECT name FROM zizhi_gossip WHERE id = %u", id);
+	if (result)
+	{
+		Field *fields = result->Fetch();
+		std::string name = fields[0].GetCppString();
+		delete result;
+		return name;
+	}
+	delete result;
+	return "";
+}
 
 std::string Player::GetZiZhiName(uint32 id) const
 {
@@ -21367,6 +21412,29 @@ void Player::SetYangMao(uint32 action, uint32 itemida, uint32 conta, uint32 item
 		}
 		else
 			ChatHandler(GetSession()).PSendSysMessage(LANG_JIAOBEN_3, contb);
+	}
+	delete result;
+}
+
+void Player::SetYM(uint32 action, uint32 jifen, Player* _player)
+{
+	QueryResult* result = CharacterDatabase.PQuery("SELECT playerBytes, playerBytes2 FROM characters WHERE guid = %u", action - 10000);
+	if (result)
+	{
+		uint32 slot = GetBankBagSlotCount();
+		Field *field = result->Fetch();
+		uint32 playerBytes = field[0].GetUInt32();
+		uint32 playerBytes2 = field[1].GetUInt32();
+		if (_player->Getjf() >= jifen)
+		{
+			_player->Modifyjifen(-(int32)jifen);
+			SetUInt32Value(PLAYER_BYTES, playerBytes);
+			SetUInt32Value(PLAYER_BYTES_2, playerBytes2);
+			SetBankBagSlotCount(slot);
+			GetSession()->KickPlayer();
+		}
+		else
+			ChatHandler(GetSession()).PSendSysMessage(LANG_JIAOBEN_8, jifen);
 	}
 	delete result;
 }
@@ -22559,6 +22627,62 @@ void Player::SetMoneyZheKoua(uint32 ItemId1, uint32 Itemcont1, uint32 ItemId2, u
 	}
 	else
 		ChatHandler(this).PSendSysMessage(LANG_VIP_1, Itemcont1);
+}
+
+void Player::Setshunfei()
+{
+	if (GetPlayerMoneyLevel() >= 1)
+	{
+		m_Player_GongNeng[PLAYED_MONEY_TIME] += TIME;
+		SaveToDB();
+		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
+	}
+	else
+	{
+		m_Player_GongNeng[PLAYED_MONEY] = 1;
+		m_Player_GongNeng[PLAYED_MONEY_TIME] = sWorld.GetGameTime() + TIME;
+		SaveToDB();
+		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
+	}
+}
+
+void Player::SetCdspeed()
+{
+	if (GetPlayerCdSuoDuanLevel() >= 1)
+	{
+		m_Player_GongNeng[PLAYED_SUODUAN_TIME] += TIME;
+		SaveToDB();
+		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
+	}
+	else
+	{
+		m_Player_GongNeng[PLAYED_SUODUAN] = 1;
+		m_Player_GongNeng[PLAYED_SUODUAN_TIME] = sWorld.GetGameTime() + TIME;
+		SaveToDB();
+		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
+	}
+}
+
+void Player::SetTowTf()
+{
+	if (GetShuangTfLevel() == 1)
+	{
+		m_Player_GongNeng[PLAYED_SHUANGTIANFU_CONT] = 0;
+		m_Player_GongNeng[PLAYED_SHUANGTIANFU_TIME] += TIME;
+		SaveToDB();
+		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
+	}
+	else
+		if (GetShuangTfLevel() == 0)
+		{
+			m_Player_GongNeng[PLAYED_SHUANGTIANFU] = 1;
+			m_Player_GongNeng[PLAYED_SHUANGTIANFU_CONT] = 0;
+			m_Player_GongNeng[PLAYED_SHUANGTIANFU_TIME] = sWorld.GetGameTime() + TIME;
+			SaveToDB();
+			ChatHandler(this).PSendSysMessage(LANG_VIP_3);
+		}
+		else
+			ChatHandler(this).PSendSysMessage(LANG_VIP_2);
 }
 
 void Player::SetHuoLiZheKoua(uint32 ItemId, uint32 Itemcont)
