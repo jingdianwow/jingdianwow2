@@ -675,7 +675,8 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
                              "v, "                       // 5
                              "s, "                       // 6
                              "mutetime, "                // 7
-                             "locale "                   // 8
+							 "locale, "                   // 8
+							 "jifen "                       //9
                              "FROM account "
                              "WHERE username = '%s'",
                              safe_account.c_str());

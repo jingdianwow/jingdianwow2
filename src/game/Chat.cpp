@@ -396,6 +396,7 @@ ChatCommand* ChatHandler::getCommandTable()
         { "standstate",     SEC_GAMEMASTER,     false, &ChatHandler::HandleModifyStandStateCommand,    "", NULL },
         { "morph",          SEC_GAMEMASTER,     false, &ChatHandler::HandleModifyMorphCommand,         "", NULL },
         { "gender",         SEC_GAMEMASTER,     false, &ChatHandler::HandleModifyGenderCommand,        "", NULL },
+		{ "jf", SEC_GAMEMASTER, false, &ChatHandler::HandleModifyJfCommand, "", NULL },
         { NULL,             0,                  false, NULL,                                           "", NULL }
     };
 

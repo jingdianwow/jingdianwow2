@@ -13445,6 +13445,30 @@ void Player::CompleteQuest(uint32 quest_id)
     }
 }
 
+uint32 Player::Getjf() const
+{
+	QueryResult *result;
+	result = LoginDatabase.PQuery("SELECT `jifen` FROM `account` WHERE `id` = '%u'", GetSession()->GetAccountId());
+	if (result)
+	{
+		uint32 a = result->Fetch()[0].GetUInt32();;
+		delete result;
+		return a;
+	}
+	delete result;
+	return 0;
+}
+
+void Player::Modifyjifen(int32 d)
+{
+	int32 jfuser = Getjf();
+	int32 Newjifen = jfuser + d;
+	if (Newjifen < 0)
+		LoginDatabase.PExecute("UPDATE `account` SET `jifen` = '0' WHERE `id` = '%u'", GetSession()->GetAccountId());
+	else
+		LoginDatabase.PExecute("UPDATE `account` SET `jifen` = '%u' WHERE `id` = '%u'", Newjifen, GetSession()->GetAccountId());
+}
+
 void Player::IncompleteQuest(uint32 quest_id)
 {
     if (quest_id)

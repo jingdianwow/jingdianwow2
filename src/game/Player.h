@@ -1469,6 +1469,9 @@ class MANGOS_DLL_SPEC Player : public Unit
         PlayerMails::iterator GetMailBegin() { return m_mail.begin();}
         PlayerMails::iterator GetMailEnd() { return m_mail.end();}
 
+		uint32 Getjf() const;
+		void Modifyjifen(int32 d);
+
         /*********************************************************/
         /*** MAILED ITEMS SYSTEM ***/
         /*********************************************************/
