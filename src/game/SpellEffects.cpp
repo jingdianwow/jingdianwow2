@@ -4990,6 +4990,7 @@ void Spell::EffectReputation(SpellEffectIndex eff_idx)
 		switch (m_CastItem->GetEntry())
 		{
 		case 30047:
+		case 90002:
 			if (_player->GetPlayerMoneyLevel() >= 1)
 			{
 				_player->m_Player_GongNeng[PLAYED_MONEY_TIME] += 2592000;
