@@ -320,6 +320,14 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
     BattleGroundQueue& bgQueue = sBattleGroundMgr.m_BattleGroundQueues[bgQueueTypeId];
     if (joinAsGroup)
     {
+		if (sWorld.getConfig(CONFIG_BOOL_GUILD) == false)
+		{
+			if (_player->GetGroup())
+			{
+				ChatHandler(_player).SendSysMessage(LANG_CHANNEL_10);
+				return;
+			}
+		}
         DEBUG_LOG("Battleground: the following players are joining as group:");
         GroupQueueInfo* ginfo = bgQueue.AddGroup(_player, grp, bgTypeId, bgBracketId, isPremade);
         uint32 avgTime = bgQueue.GetAverageQueueWaitTime(ginfo, _player->GetBattleGroundBracketIdFromLevel(bgTypeId));

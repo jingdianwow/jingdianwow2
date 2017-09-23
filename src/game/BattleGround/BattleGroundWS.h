@@ -94,7 +94,7 @@ enum BG_WS_Events
 };
 
 // Honor granted depending on player's level
-const uint32 BG_WSG_FlagCapturedHonor[MAX_BATTLEGROUND_BRACKETS] = {48, 82, 136, 256, 378, 396};
+const uint32 BG_WSG_FlagCapturedHonor[MAX_BATTLEGROUND_BRACKETS] = {48, 82, 136, 226, 378, 396};
 const uint32 BG_WSG_WinMatchHonor[MAX_BATTLEGROUND_BRACKETS] = {24, 41, 68, 113, 189, 128};
 
 class BattleGroundWS : public BattleGround

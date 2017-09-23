@@ -144,9 +144,9 @@ void BattleGroundAB::Update(uint32 diff)
 
         // Test win condition
         if (m_TeamScores[TEAM_INDEX_ALLIANCE] >= BG_AB_MAX_TEAM_SCORE)
-            EndBattleGround(ALLIANCE);
+            BattleGroundAB::EndBattleGround(ALLIANCE);
         if (m_TeamScores[TEAM_INDEX_HORDE] >= BG_AB_MAX_TEAM_SCORE)
-            EndBattleGround(HORDE);
+            BattleGroundAB::EndBattleGround(HORDE);
     }
 }
 
@@ -449,10 +449,18 @@ void BattleGroundAB::Reset()
 void BattleGroundAB::EndBattleGround(Team winner)
 {
     // win reward
-    if (winner == ALLIANCE)
+	if (winner == ALLIANCE)
+	{
+		RewardReputationToTeam(509, 250, ALLIANCE);
+		RewardReputationToTeam(510, 125, HORDE);
 		RewardHonorToTeam(BG_AB_WinMatchHonor[5], ALLIANCE);
-    if (winner == HORDE)
+	}
+	if (winner == HORDE)
+	{
+		RewardReputationToTeam(510, 250, HORDE);
+		RewardReputationToTeam(509, 125, ALLIANCE);
 		RewardHonorToTeam(BG_AB_WinMatchHonor[5], HORDE);
+	}
 
     BattleGround::EndBattleGround(winner);
 }

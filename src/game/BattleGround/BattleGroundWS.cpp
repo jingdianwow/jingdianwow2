@@ -214,11 +214,24 @@ void BattleGroundWS::EventPlayerCapturedFlag(Player* source)
 
     if (winner)
     {
-        UpdateWorldState(BG_WS_FLAG_UNK_ALLIANCE, 0);
-        UpdateWorldState(BG_WS_FLAG_UNK_HORDE, 0);
-        UpdateWorldState(BG_WS_FLAG_STATE_ALLIANCE, 1);
-        UpdateWorldState(BG_WS_FLAG_STATE_HORDE, 1);
-
+		if (source->GetTeam() == ALLIANCE)
+		{
+			UpdateWorldState(BG_WS_FLAG_UNK_ALLIANCE, 0);
+			UpdateWorldState(BG_WS_FLAG_UNK_HORDE, 0);
+			UpdateWorldState(BG_WS_FLAG_STATE_ALLIANCE, 1);
+			UpdateWorldState(BG_WS_FLAG_STATE_HORDE, 1);
+			RewardReputationToTeam(890, 250, ALLIANCE);
+			RewardReputationToTeam(889, 125, HORDE);
+		}
+		else if (source->GetTeam() == HORDE)
+		{
+			UpdateWorldState(BG_WS_FLAG_UNK_ALLIANCE, 0);
+			UpdateWorldState(BG_WS_FLAG_UNK_HORDE, 0);
+			UpdateWorldState(BG_WS_FLAG_STATE_ALLIANCE, 1);
+			UpdateWorldState(BG_WS_FLAG_STATE_HORDE, 1);
+			RewardReputationToTeam(889, 250, HORDE);
+			RewardReputationToTeam(890, 125, ALLIANCE);
+		}
         EndBattleGround(winner);
     }
     else

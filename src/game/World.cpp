@@ -837,6 +837,7 @@ void World::LoadConfigSettings(bool reload)
 	setConfig(CREATURE_ELITE_RAREELITE_RAREELITE, "Rate.Creature.Rareelite.Time", 10);
 	setConfig(CREATURE_ELITE_WORLDBOSS_WORLDBOSS, "Rate.Creature.WorldBoss.Time", 10);
 	setConfig(CREATURE_ELITE_RARE_RARE, "Rate.Creature.Rare.Time", 10);
+	setConfig(CONFIG_BOOL_GUILD, "Battleground.Guild.On", false);
 
 	setConfig(CONFIG_BOOL_OUTDOORPVP_TS_ENABLED,                       "OutdoorPvP.TSEnabled", true);
 	setConfig(CONFIG_BOOL_OUTDOORPVP_ZG_ENABLED,                       "OutdoorPvP.ZUGEnabled", true);
