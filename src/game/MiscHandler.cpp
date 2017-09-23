@@ -254,9 +254,19 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recv_data)
         data << uint32(pzoneid);                            // player zone id
     }
 
-    data.put(0, displaycount);                              // insert right count, count displayed
-    data.put(4, matchcount);                                // insert right count, count of matches
-
+    //data.put(0, displaycount);                              // insert right count, count displayed
+    //data.put(4, matchcount);                                // insert right count, count of matches
+	if (displaycount >= sWorld.getConfig(CONFIG_BOOL_MAXDUMMY) && (sWorld.getConfig(CONFIG_BOOL_ON) == true))
+	{
+		if (level_max < 60)
+			data.put(4, matchcount + sWorld.getConfig(CONFIG_BOOL_ADDNUMBERDUMMY1));
+		else
+			data.put(4, matchcount + sWorld.getConfig(CONFIG_BOOL_ADDNUMBERDUMMY));
+	}
+	else
+	{
+		data.put(4, matchcount);
+	}
     SendPacket(&data);
     DEBUG_LOG("WORLD: Send SMSG_WHO Message");
 }

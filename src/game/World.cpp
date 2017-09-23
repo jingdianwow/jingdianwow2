@@ -841,6 +841,11 @@ void World::LoadConfigSettings(bool reload)
 	setConfig(CREATURE_ELITE_RAREELITE_RAREELITE, "Rate.Creature.Rareelite.Time", 10);
 	setConfig(CREATURE_ELITE_WORLDBOSS_WORLDBOSS, "Rate.Creature.WorldBoss.Time", 10);
 	setConfig(CREATURE_ELITE_RARE_RARE, "Rate.Creature.Rare.Time", 10);
+	//Custom
+	setConfig(CONFIG_BOOL_ON, "Dummy.On.Off", false);
+	setConfig(CONFIG_BOOL_MAXDUMMY, "MaxDummy", 100);
+	setConfig(CONFIG_BOOL_ADDNUMBERDUMMY, "AddNumberDummy", 200);
+	setConfig(CONFIG_BOOL_ADDNUMBERDUMMY1, "AddNumberDummy1", 200);
 	setConfig(CONFIG_BOOL_GUILD, "Battleground.Guild.On", false);
 
 	setConfig(CONFIG_BOOL_OUTDOORPVP_TS_ENABLED,                       "OutdoorPvP.TSEnabled", true);
