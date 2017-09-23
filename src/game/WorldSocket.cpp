@@ -633,6 +633,7 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
     std::string account;
     Sha1Hash sha1;
     BigNumber v, s, g, N, K;
+	uint32 jifen;
     WorldPacket packet, SendAddonPacked;
 
     // Read the content of the packet
@@ -738,7 +739,7 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
     locale = LocaleConstant(fields[8].GetUInt8());
     if (locale >= MAX_LOCALE)
         locale = LOCALE_enUS;
-
+	jifen = fields[9].GetUInt32();
     delete result;
 
     // Re-check account ban (same check as in realmd)
