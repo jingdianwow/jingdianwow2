@@ -13535,29 +13535,32 @@ void Player::RewardQuest(Quest const* pQuest, uint32 reward, Object* questGiver,
     QuestStatusData& q_status = mQuestStatus[quest_id];
 
     // Used for client inform but rewarded only in case not max level
-	uint32 xp;
-	if (GetTeam() == ALLIANCE)
-	{
-		if (HasItemCount(26001, 1, false) || HasItemCount(30041, 1, false) || GetPlayerCdChongZhiLevel() == 1)
-			xp = uint32(pQuest->XPValue(this) * 8 * 2);
+	uint32 xp_lm = uint32(pQuest->XPValue(this) * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_QUEST_LM));
+	uint32 xp_bl = uint32(pQuest->XPValue(this) * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_QUEST_BL));
+
+	if (HasItemCount(26001, 1, false) || HasItemCount(30041, 1, false) || GetPlayerCdChongZhiLevel() == 1)
+		if (GetTeam() == ALLIANCE)
+		{
+			xp_lm = uint32(pQuest->XPValue(this)* sWorld.getConfig(CONFIG_FLOAT_RATE_XP_QUEST_LM) * 2);
+		}
 		else
-			xp = uint32(pQuest->XPValue(this) * 5);
-	}
+		{
+			xp_bl = uint32(pQuest->XPValue(this)* sWorld.getConfig(CONFIG_FLOAT_RATE_XP_QUEST_BL) * 2);
+		}
+	if (getLevel() < sWorld.getConfig(CONFIG_UINT32_MAX_PLAYER_LEVEL))
+		if (GetTeam() == ALLIANCE)
+		{
+			GiveXP(xp_lm, NULL);
+		}
+		else
+		{
+			GiveXP(xp_bl, NULL);
+		}
 	else
-	{
-		if (HasItemCount(26001, 1, false) || HasItemCount(30041, 1, false) || GetPlayerCdChongZhiLevel() == 1)
-			xp = uint32(pQuest->XPValue(this) * 8 * 2);
-		else
-			xp = uint32(pQuest->XPValue(this) * 8);
-	}
+		ModifyMoney(int32(pQuest->GetRewMoneyMaxLevel() * sWorld.getConfig(CONFIG_FLOAT_RATE_DROP_MONEY)));
 
-    if (getLevel() < sWorld.getConfig(CONFIG_UINT32_MAX_PLAYER_LEVEL))
-        GiveXP(xp , NULL);
-    else
-        ModifyMoney(int32(pQuest->GetRewMoneyMaxLevel() * sWorld.getConfig(CONFIG_FLOAT_RATE_DROP_MONEY)));
-
-    // Give player extra money if GetRewOrReqMoney > 0 and get ReqMoney if negative
-    ModifyMoney(pQuest->GetRewOrReqMoney());
+	// Give player extra money if GetRewOrReqMoney > 0 and get ReqMoney if negative
+	ModifyMoney(pQuest->GetRewOrReqMoney());
 
     // Send reward mail
     if (uint32 mail_template_id = pQuest->GetRewMailTemplateId())
@@ -13572,8 +13575,15 @@ void Player::RewardQuest(Quest const* pQuest, uint32 reward, Object* questGiver,
     if (q_status.uState != QUEST_NEW)
         q_status.uState = QUEST_CHANGED;
 
-    if (announce)
-        SendQuestReward(pQuest, xp);
+	if (announce)
+		if (GetTeam() == ALLIANCE)
+		{
+			SendQuestReward(pQuest, xp_lm);
+		}
+		else
+		{
+			SendQuestReward(pQuest, xp_bl);
+		}
 
     bool handled = false;
 

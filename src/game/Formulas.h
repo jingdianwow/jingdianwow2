@@ -316,19 +316,29 @@ namespace MaNGOS
 			if (u->GetTypeId() == TYPEID_UNIT && ((Creature*)u)->IsElite())
 				xp_gain *= 2;
 
-			if (pl->GetTeam() == ALLIANCE)
-			{
-				if (pl->HasItemCount(26001, 1, false) || pl->HasItemCount(30041, 1, false) || pl->GetPlayerCdChongZhiLevel() == 1)
-					return (uint32)(xp_gain * 8 * 2);
+			if (pl->HasItemCount(26001, 1, false) || pl->HasItemCount(30041, 1, false) || pl->GetPlayerCdChongZhiLevel() == 1)
+				if (pl->GetTeam() == ALLIANCE)
+				{
+					return (uint32)(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL_LM) * 2);
+				}
 				else
-					return (uint32)(xp_gain * 8);
-			}
+				{
+					return (uint32)(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL_BL) * 2);
+				}
 			else
 			{
-				if (pl->HasItemCount(26001, 1, false) || pl->HasItemCount(30041, 1, false) || pl->GetPlayerCdChongZhiLevel() == 1)
-					return (uint32)(xp_gain * 8 * 2);
+				if (pl->GetTeam() == ALLIANCE)
+				{
+					//if (pl->GetGroup())//б┴иж?ио?-?иж?ио3иж
+						//return (uint32)(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL_LM) * 1.2);
+					return (uint32)(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL_LM));
+				}
 				else
-					return (uint32)(xp_gain * 8);
+				{
+					//if (pl->GetGroup())
+						//return (uint32)(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL_LM) * 1.2);
+					return (uint32)(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL_BL));
+				}
 			}
 		}
 
