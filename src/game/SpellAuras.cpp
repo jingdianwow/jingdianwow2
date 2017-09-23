@@ -1953,6 +1953,226 @@ void Aura::HandleAuraTransform(bool apply, bool Real)
 					case 30088:
 						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 10543;
 						target->SetDisplayId(10543);
+					case 30095:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 2043;
+						target->SetDisplayId(2043);
+						return;
+					case 30096:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 134;
+						target->SetDisplayId(134);
+						return;
+					case 30097:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 4473;
+						target->SetDisplayId(4473);
+						return;
+					case 30140:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 9989;
+						target->SetDisplayId(9989);
+						return;
+					case 30142:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11657;
+						target->SetDisplayId(11657);
+						return;
+					case 30143:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 7274;
+						target->SetDisplayId(7274);
+						return;
+					case 30146:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 574;
+						target->SetDisplayId(574);
+						return;
+					case 30149:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 797;
+						target->SetDisplayId(797);
+						return;
+					case 30150:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15585;
+						target->SetDisplayId(15585);
+						return;
+					case 30151:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 2970;
+						target->SetDisplayId(2970);
+						return;
+					case 30152:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 4307;
+						target->SetDisplayId(4307);
+						return;
+					case 30153:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 252;
+						target->SetDisplayId(252);
+						return;
+					case 30154:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 5566;
+						target->SetDisplayId(5566);
+						return;
+					case 30156:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 10729;
+						target->SetDisplayId(10729);
+						return;
+					case 30157:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16154;
+						target->SetDisplayId(16154);
+						return;
+					case 30158:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16155;
+						target->SetDisplayId(16155);
+						return;
+					case 30159:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16153;
+						target->SetDisplayId(16153);
+						return;
+					case 30160:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16582;
+						target->SetDisplayId(16582);
+						return;
+					case 30161:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11072;
+						target->SetDisplayId(11072);
+						return;
+					case 30162:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11072;
+						target->SetDisplayId(11072);
+						return;
+					case 30163:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 6879;
+						target->SetDisplayId(6879);
+						return;
+					case 30164:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 5233;
+						target->SetDisplayId(5233);
+						return;
+					case 30165:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 3494;
+						target->SetDisplayId(3494);
+						return;
+					case 30166:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 8769;
+						target->SetDisplayId(8769);
+						return;
+					case 30167:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 14673;
+						target->SetDisplayId(14673);
+						return;
+					case 30168:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 527;
+						target->SetDisplayId(527);
+						return;
+					case 30169:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15369;
+						target->SetDisplayId(15369);
+						return;
+					case 30170:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11069;
+						target->SetDisplayId(11069);
+						return;
+					case 30171:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 14308;
+						target->SetDisplayId(14308);
+						return;
+					case 30172:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 9472;
+						target->SetDisplayId(9472);
+						return;
+					case 30173:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 4527;
+						target->SetDisplayId(4527);
+						return;
+					case 30174:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11658;
+						target->SetDisplayId(11658);
+						return;
+					case 30175:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15315;
+						target->SetDisplayId(15315);
+						return;
+					case 30176:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 1447;
+						target->SetDisplayId(1447);
+						return;
+					case 30177:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15745;
+						target->SetDisplayId(15745);
+						return;
+					case 30178:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16014;
+						target->SetDisplayId(16014);
+						return;
+					case 30179:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16015;
+						target->SetDisplayId(16015);
+						return;
+					case 30180:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 10648;
+						target->SetDisplayId(10648);
+						return;
+					case 30181:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 6980;
+						target->SetDisplayId(6980);
+						return;
+					case 30182:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11400;
+						target->SetDisplayId(11400);
+						return;
+					case 30183:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 12473;
+						target->SetDisplayId(12473);
+						return;
+					case 30184:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15387;
+						target->SetDisplayId(15387);
+						return;
+					case 30185:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 3258;
+						target->SetDisplayId(3258);
+						return;
+					case 30186:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 11906;
+						target->SetDisplayId(11906);
+						return;
+					case 30187:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15806;
+						target->SetDisplayId(15806);
+						return;
+					case 30188:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15795;
+						target->SetDisplayId(15795);
+						return;
+					case 30189:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 15688;
+						target->SetDisplayId(15688);
+						return;
+					case 30190:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 8842;
+						target->SetDisplayId(8842);
+						return;
+					case 30191:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 5130;
+						target->SetDisplayId(5130);
+						return;
+					case 30192:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 10431;
+						target->SetDisplayId(10431);
+						return;
+					case 30193:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 14773;
+						target->SetDisplayId(14773);
+						return;
+					case 30194:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 16110;
+						target->SetDisplayId(16110);
+						return;
+					case 30195:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 4012;
+						target->SetDisplayId(4012);
+						return;
+					case 30196:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 7633;
+						target->SetDisplayId(7633);
+						return;
+					case 30198:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 10145;
+						target->SetDisplayId(10145);
+						return;
 						return;
 					default:
 						break;
