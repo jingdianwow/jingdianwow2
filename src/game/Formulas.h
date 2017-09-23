@@ -209,7 +209,7 @@ namespace MaNGOS
 			if (result > 100)
 				return 100.0;
 			else
-				return result * 2;
+				return result;
         }
 
         inline float HonorableKillPoints(Player* killer, Player* victim, uint32 groupsize)

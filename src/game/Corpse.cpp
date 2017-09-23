@@ -254,12 +254,12 @@ bool Corpse::LoadFromDB(uint32 lowguid, Field* fields)
     return true;
 }
 
-/*bool Corpse::isVisibleForInState(Player const* u, WorldObject const* viewPoint, bool inVisibleList) const
-{
-	return IsInWorld() && u->IsInWorld() && IsWithinDistInMap(viewPoint, GetMap()->GetVisibilityDistance() + (inVisibleList ? World::GetVisibleObjectGreyDistance() : 0.0f), false);
-}*/
-
 bool Corpse::isVisibleForInState(Player const* u, WorldObject const* viewPoint, bool inVisibleList) const
+{
+	return IsInWorld() && u->IsInWorld() && IsWithinDistInMap(viewPoint, u->GetMap()->GetVisibilityDistance() + (inVisibleList ? World::GetVisibleObjectGreyDistance() : 0.0f), false);
+}
+
+/*bool Corpse::isVisibleForInState(Player const* u, WorldObject const* viewPoint, bool inVisibleList) const
 {
 	if (!IsInWorld() || u->IsInWorld())
 		return false;
@@ -268,7 +268,7 @@ bool Corpse::isVisibleForInState(Player const* u, WorldObject const* viewPoint, 
 		return false;
 
 	return true;
-}
+}*/
 
 bool Corpse::IsHostileTo(Unit const* unit) const
 {
