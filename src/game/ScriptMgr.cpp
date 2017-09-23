@@ -73,6 +73,7 @@ ScriptMgr::ScriptMgr() :
     m_pGetGODialogStatus(NULL),
     m_pOnGOUse(NULL),
     m_pOnItemUse(NULL),
+	m_pOnGossipItemSelect(NULL),
     m_pOnAreaTrigger(NULL),
     m_pOnProcessEvent(NULL),
     m_pOnEffectDummyCreature(NULL),
