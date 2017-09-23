@@ -105,6 +105,9 @@ class ReputationMgr
             return SetReputation(factionEntry, standing, true);
         }
 
+		bool SetReputation(uint32 factionId, int32 standing);
+		bool ModifyReputation(uint32 factionId, int32 standing);
+
         void SetVisible(FactionTemplateEntry const* factionTemplateEntry);
         void SetVisible(FactionEntry const* factionEntry);
         void SetAtWar(RepListID repListID, bool on);

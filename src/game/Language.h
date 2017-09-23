@@ -1058,7 +1058,7 @@ enum MangosStrings
 	LANG_OPVP_SI_CAPTURE_1              = 6601,
 	LANG_WHISPER_REQ                    = 6605,
 	LANG_CHANNEL_REQ                    = 6606,
-
+	LANG_CHONGFUGOUMAI = 12001, //÷ÿ∏¥π∫¬ÚÃ· æ
 	LANG_CHANNEL_1                      = 6607,
 	LANG_CHANNEL_2                      = 6608,
 	LANG_CHANNEL_3                      = 6609,

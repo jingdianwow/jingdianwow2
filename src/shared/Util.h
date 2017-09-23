@@ -48,6 +48,7 @@ MANGOS_DLL_SPEC int32 irand(int32 min, int32 max);
 /* Return a random number in the range min..max (inclusive). For reliable results, the difference
 * between max and min should be less than RAND32_MAX. */
 MANGOS_DLL_SPEC uint32 urand(uint32 min, uint32 max);
+MANGOS_DLL_SPEC uint32 urand2(uint32 min, uint32 max);
 
 /* Return a random number in the range min..max (inclusive). */
 MANGOS_DLL_SPEC float frand(float min, float max);

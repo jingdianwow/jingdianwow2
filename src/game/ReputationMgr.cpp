@@ -250,6 +250,32 @@ bool ReputationMgr::SetReputation(FactionEntry const* factionEntry, int32 standi
     return res;
 }
 
+bool ReputationMgr::SetReputation(uint32 factionId, int32 standing)
+{
+	FactionEntry const *factionEntry = sFactionStore.LookupEntry(factionId);
+
+	if (!factionEntry)
+	{
+		//sLog.outLog(LOG_DEFAULT, "ERROR: ReputationMgr::SetReputation: Can't get reputation of %s for unknown faction (faction id) #%u.", m_player->GetName(), factionId);
+		return false;
+	}
+
+	return SetReputation(factionEntry, standing, false);
+}
+
+bool ReputationMgr::ModifyReputation(uint32 factionId, int32 standing)
+{
+	FactionEntry const *factionEntry = sFactionStore.LookupEntry(factionId);
+
+	if (!factionEntry)
+	{
+		//sLog.outLog(LOG_DEFAULT, "ERROR: ReputationMgr::SetReputation: Can't get reputation of %s for unknown faction (faction id) #%u.", m_player->GetName(), factionId);
+		return false;
+	}
+
+	return SetReputation(factionEntry, standing, true);
+}
+
 bool ReputationMgr::SetOneFactionReputation(FactionEntry const* factionEntry, int32 standing, bool incremental)
 {
     FactionStateList::iterator itr = m_factions.find(factionEntry->reputationListID);
