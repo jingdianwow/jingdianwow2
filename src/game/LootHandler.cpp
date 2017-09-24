@@ -480,12 +480,11 @@ void WorldSession::DoLootRelease(ObjectGuid lguid)
                 // normal persistence loot
                 default:
                 {
-                    // must be destroyed only if no loot
-                    if (pItem->loot.isLooted())
-                    {
-                        pItem->SetLootState(ITEM_LOOT_REMOVED);
-                        player->DestroyItem(pItem->GetBagSlot(), pItem->GetSlot(), true);
-                    }
+					if (!pItem->loot.isLooted())
+						player->AutoStoreLoot(pItem->loot); // can be lost if no space
+					pItem->loot.clear();
+					pItem->SetLootState(ITEM_LOOT_REMOVED);
+					player->DestroyItem(pItem->GetBagSlot(), pItem->GetSlot(), true);
                     break;
                 }
             }
