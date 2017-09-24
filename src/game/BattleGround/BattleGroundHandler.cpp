@@ -155,12 +155,12 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
 			}
 			break;
 		case BATTLEGROUND_WS:
-			if (sWorld.GetDateToday() == 1 || sWorld.GetDateToday() == 3 || sWorld.GetDateToday() == 5 || sWorld.GetDateToday() == 7)
+			if (sWorld.GetDateToday() == 2 || sWorld.GetDateToday() == 4 || sWorld.GetDateToday() == 6)
 			{
 				ChatHandler(_player).PSendSysMessage(LANG_CHANNEL_21);
 				return;
 			}
-			if (sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp2())
+			if (sWorld.GetDateToday() == 1 || sWorld.GetDateToday() == 3 || sWorld.GetDateToday() == 5 || sWorld.GetDateToday() == 7)
 			{
 				uint32 time_Start1 = sWorld.battleground_time_Start1 + 18000;
 				uint32 time_End1 = sWorld.battleground_time_End1 + 27000;
@@ -202,13 +202,13 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
 			}
 			break;
 		case BATTLEGROUND_AB:
-			if (sWorld.GetDateToday() == 2 || sWorld.GetDateToday() == 4 || sWorld.GetDateToday() == 6 || sWorld.GetDateToday() == 7)
+			if (sWorld.GetDateToday() == 1 || sWorld.GetDateToday() == 3 || sWorld.GetDateToday() == 5)
 			{
 				ChatHandler(_player).PSendSysMessage(LANG_CHANNEL_22);
 				return;
 			}
 
-			if (sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp1())
+			if (sWorld.GetDateToday() == 2 || sWorld.GetDateToday() == 4 || sWorld.GetDateToday() == 6 || sWorld.GetDateToday() == 7)
 			{
 				uint32 time_Start1 = sWorld.battleground_time_Start1 + 18000;
 				uint32 time_End1 = sWorld.battleground_time_End1 + 27000;
