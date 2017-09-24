@@ -21725,22 +21725,28 @@ void Player::AutoStoreLoot(Loot& loot, bool broadcast, uint8 bag, uint8 slot)
     uint32 max_slot = loot.GetMaxSlotInLootFor(this);
     for (uint32 i = 0; i < max_slot; ++i)
     {
-        LootItem* lootItem = loot.LootItemInSlot(i, this);
+		if (loot.isLooted())
+		{
+			continue;
+		}
 
-        ItemPosCountVec dest;
-        InventoryResult msg = CanStoreNewItem(bag, slot, dest, lootItem->itemid, lootItem->count);
-        if (msg != EQUIP_ERR_OK && slot != NULL_SLOT)
-            msg = CanStoreNewItem(bag, NULL_SLOT, dest, lootItem->itemid, lootItem->count);
-        if (msg != EQUIP_ERR_OK && bag != NULL_BAG)
-            msg = CanStoreNewItem(NULL_BAG, NULL_SLOT, dest, lootItem->itemid, lootItem->count);
-        if (msg != EQUIP_ERR_OK)
-        {
-            SendEquipError(msg, NULL, NULL, lootItem->itemid);
-            continue;
-        }
+		if (LootItem* lootItem = loot.LootItemInSlot(i, this))
+		{
+			ItemPosCountVec dest;
+			InventoryResult msg = CanStoreNewItem(bag, slot, dest, lootItem->itemid, lootItem->count);
+			if (msg != EQUIP_ERR_OK && slot != NULL_SLOT)
+				msg = CanStoreNewItem(bag, NULL_SLOT, dest, lootItem->itemid, lootItem->count);
+			if (msg != EQUIP_ERR_OK && bag != NULL_BAG)
+				msg = CanStoreNewItem(NULL_BAG, NULL_SLOT, dest, lootItem->itemid, lootItem->count);
+			if (msg != EQUIP_ERR_OK)
+			{
+				SendEquipError(msg, NULL, NULL, lootItem->itemid);
+				continue;
+			}
 
-        Item* pItem = StoreNewItem(dest, lootItem->itemid, true, lootItem->randomPropertyId);
-        SendNewItem(pItem, lootItem->count, false, false, broadcast);
+			Item* pItem = StoreNewItem(dest, lootItem->itemid, true, lootItem->randomPropertyId);
+			SendNewItem(pItem, lootItem->count, false, false, broadcast);
+		}
     }
 }
 
