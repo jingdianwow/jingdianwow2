@@ -1490,6 +1490,13 @@ void Spell::EffectTriggerSpell(SpellEffectIndex eff_idx)
     // special cases
     switch (triggered_spell_id)
     {
+		case 15712: //林克的回旋镖
+			if (urand(0, 1))
+				return;
+			break;
+		case 6411:  //蝎肉大餐
+			if (urand(0, 1))
+				return;
         // Vanish (not exist)
         case 18461:
         {
