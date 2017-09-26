@@ -1497,8 +1497,6 @@ void Spell::EffectTriggerSpell(SpellEffectIndex eff_idx)
 		case 6411:  //Ð«Èâ´ó²Í
 			if (urand(0, 1))
 				return;
-			break;
-			
         // Vanish (not exist)
         case 18461:
         {
