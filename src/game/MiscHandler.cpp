@@ -257,12 +257,12 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recv_data)
 
     data.put(0, displaycount);                              // insert right count, count displayed
     //data.put(4, matchcount);                                // insert right count, count of matches
-	if (displaycount >= sConfig.GetIntDefault("MaxDummy", 30) && (sConfig.GetIntDefault("Dummy.On.Off", 1) == 1))
+	if (displaycount >= sConfig.GetIntDefault("MaxDummy", 30) && (sConfig.GetIntDefault("Dummy.On.Off", 1) == 1) && (sWorld.GetActiveSessionCount() - matchcount < 10))
 	{
 		if (level_max < 60)
 			data.put(4, matchcount + sConfig.GetIntDefault("AddNumberDummy1", 200));
 		else
-			data.put(4, matchcount + sConfig.GetIntDefault("AddNumberDummy", 200));
+			data.put(4, matchcount);
 	}
 	else
 	{
