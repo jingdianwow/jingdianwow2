@@ -1143,7 +1143,6 @@ void Unit::JustKilledCreature(Creature* victim, Player* responsiblePlayer)
         return;                                             // Pets might have been unsummoned at this place, do not handle them further!
 
     /* ******************************** Prepare loot if can ************************************ */
-	victim->SetKilledTime(time(NULL));
     victim->DeleteThreatList();
     // only lootable if it has loot or can drop gold
     victim->PrepareBodyLootState();

@@ -155,8 +155,6 @@ class LootStore
         bool HaveLootFor(uint32 loot_id) const { return m_LootTemplates.find(loot_id) != m_LootTemplates.end(); }
         bool HaveQuestLootFor(uint32 loot_id) const;
         bool HaveQuestLootForPlayer(uint32 loot_id, Player* player) const;
-		bool HaveSharedQuestLootForPlayer(uint32 loot_id, Player* player) const;
-		bool HaveStartingQuestLootForPlayer(uint32 loot_id, Player* player) const;
 
         LootTemplate const* GetLootFor(uint32 loot_id) const;
 
@@ -188,8 +186,6 @@ class LootTemplate
         bool HasQuestDrop(LootTemplateMap const& store, uint8 GroupId = 0) const;
         // True if template includes at least 1 quest drop for an active quest of the player
         bool HasQuestDropForPlayer(LootTemplateMap const& store, Player const* player, uint8 GroupId = 0) const;
-		bool HasSharedQuestDropForPlayer(LootTemplateMap const& store, Player const* player, uint8 GroupId = 0) const;
-		bool HasStartingQuestDropForPlayer(LootTemplateMap const& store, Player const* player, uint8 GroupId = 0) const;
 
         // Checks integrity of the template
         void Verify(LootStore const& store, uint32 Id) const;

@@ -794,7 +794,7 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 		pCurrChar->RemoveAurasDueToSpell(26476);
 		pCurrChar->NearTeleportTo(-8570.2998f, 1991.2600f, 100.4000f, 3.44000f);
 	}
-	pCurrChar->lastTimeLooted = time(NULL);
+
     m_playerLoading = false;
     delete holder;
 }

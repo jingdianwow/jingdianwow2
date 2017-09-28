@@ -235,7 +235,6 @@ class MANGOS_DLL_SPEC Object
             SetFloatValue(index, GetFloatValue(index) * (apply ? (100.0f + val) / 100.0f : 100.0f / (100.0f + val)));
         }
 
-		void MarkFlagUpdateForClient(uint16 index);
         void SetFlag(uint16 index, uint32 newFlag);
         void RemoveFlag(uint16 index, uint32 oldFlag);
 

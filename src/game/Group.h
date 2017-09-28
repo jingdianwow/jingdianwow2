@@ -158,7 +158,6 @@ class MANGOS_DLL_SPEC Group
             std::string name;
             uint8       group;
             bool        assistant;
-			time_t      joinTime;
         };
         typedef std::list<MemberSlot> MemberSlotList;
         typedef MemberSlotList::const_iterator member_citerator;
@@ -232,16 +231,6 @@ class MANGOS_DLL_SPEC Group
         }
 
         bool SameSubGroup(Player const* member1, Player const* member2) const;
-		time_t GetMemberSlotJoinedTime(ObjectGuid guid)
-		{
-			member_citerator mslot = _getMemberCSlot(guid);
-			if (mslot == m_memberSlots.end())
-			{
-				return 0;
-			}
-
-			return mslot->joinTime;
-		}
 
 		bool HasFreeLotSubGroupReal(uint8 groupNr);
         MemberSlotList const& GetMemberSlots() const { return m_memberSlots; }
