@@ -2254,6 +2254,10 @@ void Aura::HandleAuraTransform(bool apply, bool Real)
 						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 6781;
 						target->SetDisplayId(6781);
 						return;
+					case 33031:
+						((Player*)target)->m_Player_ModelId[PLAYER_MODELID] = 2722;
+						target->SetDisplayId(2722);
+						return;
 					default:
 						break;
 					}
