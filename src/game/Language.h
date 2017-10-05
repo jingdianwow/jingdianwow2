@@ -1472,6 +1472,7 @@ enum MangosStrings
 	LANG_SAFE_21                        = 50021,
 	LANG_SAFE_22                        = 50022,
 	LANG_SAFE_23                        = 50023,
+	LANG_SAFE_24						= 50024,
 
 	LANG_TAQ_1                          = 60001,
 	LANG_TAQ_2                          = 60002,
