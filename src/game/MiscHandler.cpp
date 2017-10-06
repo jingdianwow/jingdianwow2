@@ -268,7 +268,17 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recv_data)
 	{
 		data.put(4, matchcount);
 	}
-    SendPacket(&data);
+
+	Player* pl = GetPlayer();
+
+	if (pl->getLevel() < 10)
+	{
+		return;
+	}
+	else
+	{
+		SendPacket(&data);
+	}    
     DEBUG_LOG("WORLD: Send SMSG_WHO Message");
 }
 
