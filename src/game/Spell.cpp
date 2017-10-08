@@ -6488,44 +6488,19 @@ bool Spell::CheckTargetCreatureType(Unit* target) const
 {
 	uint32 spellCreatureTargetMask = m_spellInfo->TargetCreatureType;
 
-	switch (m_spellInfo->Id)
+	// Curse of Doom : not find another way to fix spell target check :/
+	if (m_spellInfo->Id == 603)                             // in 1.12 "Curse of doom" have only 1 rank.
 	{
-		case 603:
-		{
-			if (target->GetTypeId() == TYPEID_PLAYER)
-			{
-				return false;
-			}
-			spellCreatureTargetMask = 0x7FF;
-			break;
-		}
-		case 118:   // 变形术(等级1)
-		{
-			if (target->GetTypeId() == TYPEID_UNIT && target->GetCreatureType() == CREATURE_TYPE_TOTEM)
-			{
-				return true;
-			}
-			break;
-		}
-		case 2641:
-			spellCreatureTargetMask = 0;
-			break;
-		case 12824: // 变形术(等级2)
-		case 12825: // 变形术(等级3)
-		case 12826: // 变形术(等级4)
-		{
-			if (target->GetTypeId() == TYPEID_UNIT && target->GetCreatureType() == CREATURE_TYPE_TOTEM)
-			{
-				return true;
-			}
-			break;
-		}
-		case 23356:
-			spellCreatureTargetMask = 0;
-			break;
-		default:
-			break;
+		// not allow cast at player
+		if (target->GetTypeId() == TYPEID_PLAYER)
+			return false;
+
+		spellCreatureTargetMask = 0x7FF;
 	}
+
+	// Dismiss Pet and Taming Lesson skipped
+	if (m_spellInfo->Id == 2641 || m_spellInfo->Id == 23356)
+		spellCreatureTargetMask = 0;
 
 	// skip creature type check for Grounding Totem
 	if (target->GetUInt32Value(UNIT_CREATED_BY_SPELL) == 8177)
