@@ -737,17 +737,54 @@ bool GameObject::isVisibleForInState(Player const* u, WorldObject const* viewPoi
         if (!isSpawned())
             return false;
 
-        // special invisibility cases
-        // TODO: implement trap stealth, take look at spell 2836
+		// ÌØÊâ
 		if (GetGOInfo()->type == GAMEOBJECT_TYPE_TRAP && GetGOInfo()->trap.stealthed)
 		{
-			if (GetOwner() && u->IsFriendlyTo(GetOwner()))
-				return true;
+			bool trapNotVisible = false;
 
-			if (u->HasAura(2836) && isInFront(u, 15.0f))
-				return true;
-			else
+			if (Unit* owner = GetOwner())   // Íæ¼ÒÕÙ»½µÄÏÝÚå
+			{
+				if (owner->GetTypeId() == TYPEID_PLAYER)
+				{
+					Player* ownerPlayer = (Player*)owner;
+					if ((GetMap()->IsBattleGround() && ownerPlayer->GetBGTeam() != u->GetBGTeam()) || (ownerPlayer->IsInDuelWith(u)) || (ownerPlayer->GetTeam() != u->GetTeam()))
+					{
+						trapNotVisible = true;
+					}
+				}
+				else
+				{
+					if (u->IsFriendlyTo(owner))
+					{
+						return true;
+					}
+				}
+			}
+			else                            // ÏµÍ³ÏÝÚå
+			{
+				if (this->IsFriendlyTo(u))
+				{
+					return true;
+				}
+				else
+				{
+					trapNotVisible = true;
+				}
+			}
+
+			// Õì²âÏÝÚå
+			if (Aura* aura = ((Player*)u)->GetAura(2836, EFFECT_INDEX_0))
+			{
+				if (roll_chance_i(aura->GetModifier()->m_amount) && u->isInFront(this, 15.0f))
+				{
+					return true;
+				}
+			}
+
+			if (trapNotVisible)
+			{
 				return false;
+			}
 		}
 
         // Smuggled Mana Cell required 10 invisibility type detection/state
