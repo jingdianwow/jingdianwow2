@@ -795,23 +795,6 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 		pCurrChar->NearTeleportTo(-8570.2998f, 1991.2600f, 100.4000f, 3.44000f);
 	}
 
-	if (sWorld.getConfig(CONFIG_BOOL_RUN_CLIENTS) == true)
-	{
-		HashMapHolder<Player>::MapType& m = sObjectAccessor.GetPlayers();
-		for (HashMapHolder<Player>::MapType::const_iterator itr = m.begin(); itr != m.end(); ++itr)
-		{
-			Player* pPlayer = sObjectMgr.GetPlayer(itr->first);
-
-			if (pCurrChar == pPlayer)
-				continue;
-
-			if (pCurrChar->GetSession()->GetRemoteAddress() == pPlayer->GetSession()->GetRemoteAddress())
-			{
-				pPlayer->GetSession()->KickPlayer();
-			}
-		}			
-	}
-
     m_playerLoading = false;
     delete holder;
 }
