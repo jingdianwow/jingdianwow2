@@ -620,13 +620,10 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
     }
 
     // Get in CombatState
-    if (pVictim != this)
+    if (pVictim != this && damagetype != DOT)
     {
-		if (damagetype != DOT)
-		{
-			SetInCombatWith(pVictim);
-			pVictim->SetInCombatWith(this);
-		}
+        SetInCombatWith(pVictim);
+        pVictim->SetInCombatWith(this);
 
         if (Player* attackedPlayer = pVictim->GetCharmerOrOwnerPlayerOrPlayerItself())
             SetContestedPvP(attackedPlayer);
