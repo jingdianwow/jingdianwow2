@@ -1509,7 +1509,7 @@ void Player::Update(uint32 update_diff, uint32 p_time)
     UpdateHomebindTime(update_diff);
 
     // Group update
-    //SendUpdateToOutOfRangeGroupMembers();
+    SendUpdateToOutOfRangeGroupMembers();
 
     Pet* pet = GetPet();
     if (pet && !pet->IsWithinDistInMap(this, GetMap()->GetVisibilityDistance()) && (GetCharmGuid() && (pet->GetObjectGuid() != GetCharmGuid())))
