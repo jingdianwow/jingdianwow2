@@ -31,7 +31,6 @@
 #include "Language.h"
 #include "ScriptMgr.h"
 #include "World.h"
-#include "Config/Config.h"
 
 void WorldSession::HandleBattlemasterHelloOpcode(WorldPacket& recv_data)
 {
@@ -321,7 +320,7 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
     BattleGroundQueue& bgQueue = sBattleGroundMgr.m_BattleGroundQueues[bgQueueTypeId];
     if (joinAsGroup)
     {
-		if (sConfig.GetBoolDefault("Battleground.Guild.On", false))
+		if (sWorld.getConfig(CONFIG_BOOL_GUILD) == false)
 		{
 			if (_player->GetGroup())
 			{
