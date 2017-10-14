@@ -5586,10 +5586,13 @@ void Aura::PeriodicTick()
 				case 3034:
 				case 14279:
 				case 14280:
+				{
 					if (target->GetTypeId() == TYPEID_PLAYER)
-					    if (target->HasAuraType(SPELL_AURA_MOD_CONFUSE) || target->HasAuraType(SPELL_AURA_MOD_STUN))
-						    target->RemoveAurasWithInterruptFlags(AURA_INTERRUPT_FLAG_DAMAGE);
+					{
+						target->RemoveAurasWithInterruptFlags(AURA_INTERRUPT_FLAG_DAMAGE);
+					}
 					break;
+				}
             }
             break;
         }
