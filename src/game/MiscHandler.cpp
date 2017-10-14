@@ -255,19 +255,18 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recv_data)
         data << uint32(pzoneid);                            // player zone id
     }
 
+	if (sConfig.GetBoolDefault("Dummy.Enable", false))
+	{
+		uint32 condition = sConfig.GetIntDefault("Dummy.Condition", 0);
+		if (matchcount > condition)
+		{
+			matchcount += sConfig.GetIntDefault("Dummy.Number", 0);
+		}
+	}
+
     data.put(0, displaycount);                              // insert right count, count displayed
-    //data.put(4, matchcount);                                // insert right count, count of matches
-	if (displaycount >= sConfig.GetIntDefault("MaxDummy", 30) && (sConfig.GetIntDefault("Dummy.On.Off", 1) == 1))
-	{
-		if (level_max < 60)
-			data.put(4, matchcount + sConfig.GetIntDefault("AddNumberDummy1", 200));
-		else
-			data.put(4, matchcount + sConfig.GetIntDefault("AddNumberDummy", 200));
-	}
-	else
-	{
-		data.put(4, matchcount);
-	}
+	data.put(4, matchcount);								// insert right count, count of matches
+
 	SendPacket(&data);
     
     DEBUG_LOG("WORLD: Send SMSG_WHO Message");
