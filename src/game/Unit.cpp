@@ -1981,8 +1981,35 @@ void Unit::CalculateDamageAbsorbAndResist(Unit* pCaster, SpellSchoolMask schoolM
         if ((*i)->GetHolder()->DropAuraCharge())
             mod->m_amount = 0;
         // Need remove it later
-        if (mod->m_amount <= 0)
-            existExpired = true;
+		if (mod->m_amount <= 0)
+		{
+			existExpired = true;
+		}
+		else
+		{
+			if (GetTypeId() == TYPEID_PLAYER)
+			{
+				for (uint32 i = CURRENT_FIRST_NON_MELEE_SPELL; i < CURRENT_MAX_SPELL; ++i)
+				{
+					if (i == CURRENT_CHANNELED_SPELL)
+					{
+						continue;
+					}
+
+					if (Spell* spell = GetCurrentSpell(CurrentSpellTypes(i)))
+					{
+						if (spell->getState() == SPELL_STATE_CASTING)
+						{
+							if (spell->m_spellInfo->InterruptFlags & SPELL_INTERRUPT_FLAG_ABORT_ON_DMG)
+							{
+								InterruptSpell(CurrentSpellTypes(i));
+							}
+						}
+					}
+				}
+			}
+		}
+            
     }
 
     // Remove all expired absorb auras
