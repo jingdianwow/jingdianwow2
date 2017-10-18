@@ -637,7 +637,7 @@ bool ChatHandler::HandleGonameCommand(char* args)
 
         std::string nameLink = playerLink(target_name);
 
-        PSendSysMessage(LANG_APPEARING_AT, nameLink.c_str());
+        //PSendSysMessage(LANG_APPEARING_AT, nameLink.c_str());
 
         // to point where player stay (if loaded)
         float x, y, z, o;
