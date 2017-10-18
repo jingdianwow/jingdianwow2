@@ -257,7 +257,6 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recv_data)
 
 	if (sConfig.GetBoolDefault("Dummy.Enable", false))
 	{
-		matchcount = sWorld.GetActiveSessionCount();
 		uint32 condition = sConfig.GetIntDefault("Dummy.Condition", 0);
 		if (matchcount > condition)
 		{
