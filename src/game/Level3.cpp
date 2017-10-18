@@ -369,7 +369,7 @@ bool ChatHandler::HandleReloadConfigCommand(char* /*args*/)
     sWorld.LoadConfigSettings(true);
 	sMod.LoadModConfSettings();
     sMapMgr.InitializeVisibilityDistanceInfo();
-    SendGlobalSysMessage("World config settings reloaded.");
+    //SendGlobalSysMessage("World config settings reloaded.");
     return true;
 }
 
@@ -477,7 +477,7 @@ bool ChatHandler::HandleReloadLootTemplatesCreatureCommand(char* /*args*/)
     sLog.outString("Re-Loading Loot Tables... (`creature_loot_template`)");
     LoadLootTemplates_Creature();
     LootTemplates_Creature.CheckLootRefs();
-	PSendSysMessage("DB table `creature_loot_template` reloaded.");
+	//PSendSysMessage("DB table `creature_loot_template` reloaded.");
     return true;
 }
 
