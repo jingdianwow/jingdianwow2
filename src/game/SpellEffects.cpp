@@ -3574,6 +3574,15 @@ void Spell::EffectWeaponDmg(SpellEffectIndex eff_idx)
         if (m_caster->GetTypeId() == TYPEID_PLAYER)
             ((Player*)m_caster)->AddComboPoints(unitTarget, 1);
     }
+
+	if (m_spellInfo->Id == 17364)
+	{
+		m_caster->setAttackTimer(BASE_ATTACK, 0);
+		if (m_caster->haveOffhandWeapon())
+		{
+			m_caster->setAttackTimer(OFF_ATTACK, 0);
+		}
+	}
 }
 
 void Spell::EffectThreat(SpellEffectIndex /*eff_idx*/)
