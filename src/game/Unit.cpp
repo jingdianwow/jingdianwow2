@@ -1987,6 +1987,7 @@ void Unit::CalculateDamageAbsorbAndResist(Unit* pCaster, SpellSchoolMask schoolM
 		}
 		else
 		{
+			RemoveAurasWithInterruptFlags(AURA_INTERRUPT_FLAG_DAMAGE);
 			if (GetTypeId() == TYPEID_PLAYER)
 			{
 				for (uint32 i = CURRENT_FIRST_NON_MELEE_SPELL; i < CURRENT_MAX_SPELL; ++i)
