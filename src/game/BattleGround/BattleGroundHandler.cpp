@@ -117,8 +117,8 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
 	switch (bgTypeId)
 	{
 		case BATTLEGROUND_AV://°ÂÉ½
-			if (sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp1() || sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp2())
-			{
+			/*if (sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp1() || sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp2())
+			{*/
 				if (_player->GetGroup())
 				{
 					Group* pGroup = _player->GetGroup();
@@ -147,12 +147,12 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
 					}
 					joinAsGroup = 1;
 				}
-			}
+			/*}
 			else
 			{
 				ChatHandler(_player).PSendSysMessage(LANG_CHANNEL_14);
 				return;
-			}
+			}*/
 			break;
 		case BATTLEGROUND_WS://Õ½¸èÏ¿¹È
 			if (sWorld.GetDateToday() == 2 || sWorld.GetDateToday() == 4 || sWorld.GetDateToday() == 6)
