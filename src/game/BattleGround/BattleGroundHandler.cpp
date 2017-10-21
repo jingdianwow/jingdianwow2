@@ -117,7 +117,7 @@ void WorldSession::HandleBattlemasterJoinOpcode(WorldPacket& recv_data)
 	switch (bgTypeId)
 	{
 		case BATTLEGROUND_AV://°ÂÉ½
-			if (sWorld.GetDateToday() == 8)
+			if (sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp1() || sWorld.GetDateToday() == sWorld.GetDateLastMaintenanceDayXp2())
 			{
 				if (_player->GetGroup())
 				{
