@@ -310,10 +310,7 @@ bool Map::EnsureGridLoaded(const Cell& cell)
     EnsureGridCreated(GridPair(cell.GridX(), cell.GridY()));
     NGridType* grid = getNGrid(cell.GridX(), cell.GridY());
 
-	if (grid == NULL)
-	{
-		return false;
-	}
+    MANGOS_ASSERT(grid != NULL);
     if (!isGridObjectDataLoaded(cell.GridX(), cell.GridY()))
     {
         // it's important to set it loaded before loading!
