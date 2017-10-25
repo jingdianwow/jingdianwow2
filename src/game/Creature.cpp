@@ -3255,6 +3255,20 @@ void Creature::SetLevitate(bool enable)
     // SendMessageToSet(&data, true);
 }
 
+void Creature::SetFly(bool enable)
+{
+	if (enable)
+	{
+		m_movementInfo.AddMovementFlag(MOVEFLAG_FLYING);
+		m_movementInfo.AddMovementFlag(MOVEFLAG_CAN_FLY);
+	}
+	else
+	{
+		m_movementInfo.RemoveMovementFlag(MOVEFLAG_FLYING);
+		m_movementInfo.RemoveMovementFlag(MOVEFLAG_CAN_FLY);
+	}
+}
+
 void Creature::SetSwim(bool enable)
 {
     if (enable)
