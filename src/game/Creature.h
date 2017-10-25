@@ -552,6 +552,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
 		uint32 _GetCreatureElite(int32 Rank);
         void SetWalk(bool enable, bool asDefault = true);
         void SetLevitate(bool enable) override;
+		void SetFly(bool enable) override;
         void SetSwim(bool enable) override;
         void SetCanFly(bool enable) override;
         void SetFeatherFall(bool enable) override;
