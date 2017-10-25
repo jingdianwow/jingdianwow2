@@ -17852,6 +17852,16 @@ void Player::HandleStealthedUnitsDetection()
     }
 }
 
+bool Player::IsInVisibleList(WorldObject const* u) const
+{
+	if (u == this)
+		return true;
+	m_visibleGUIDs_lock.acquire_read();
+	bool atClient = m_visibleGUIDs.find(u->GetObjectGuid()) != m_visibleGUIDs.end();
+	m_visibleGUIDs_lock.release();
+	return atClient;
+}
+
 bool Player::ActivateTaxiPathTo(std::vector<uint32> const& nodes, Creature* npc /*= NULL*/, uint32 spellid /*= 0*/)
 {
     if (nodes.size() < 2)

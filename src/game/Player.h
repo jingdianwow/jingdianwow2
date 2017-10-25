@@ -2165,7 +2165,11 @@ class MANGOS_DLL_SPEC Player : public Unit
         void SetHomebindToLocation(WorldLocation const& loc, uint32 area_id);
         void RelocateToHomebind() { SetLocationMapId(m_homebindMapId); Relocate(m_homebindX, m_homebindY, m_homebindZ); }
         bool TeleportToHomebind(uint32 options = 0) { return TeleportTo(m_homebindMapId, m_homebindX, m_homebindY, m_homebindZ, GetOrientation(), options); }
-
+		ObjectGuidSet m_visibleGUIDs;
+		mutable ACE_Thread_Mutex m_visibleGUIDs_lock;
+		std::map<ObjectGuid, bool> m_visibleGobjQuestActivated;
+		mutable ACE_Thread_Mutex m_visibleGobjsQuestAct_lock;
+		bool IsInVisibleList(WorldObject const* u) const;
         Object* GetObjectByTypeMask(ObjectGuid guid, TypeMask typemask);
 
         // currently visible objects at player client
