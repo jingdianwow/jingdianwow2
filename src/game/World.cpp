@@ -1661,7 +1661,7 @@ void World::Update(uint32 diff)
     // update the instance reset times
     sMapPersistentStateMgr.Update();
 
-    if (GetDateToday() >= m_NextMaintenanceDate)
+    /*if (GetDateToday() >= m_NextMaintenanceDate)
 	{
 		if (m_MaintenanceTimeChecker < diff)
 		{
@@ -1672,7 +1672,7 @@ void World::Update(uint32 diff)
 		}
 		else
 			m_MaintenanceTimeChecker -= diff;
-	}
+	}*/
  
 	if (battleground_time_Start1 != 0 && battleground_kaiguan == 0)
 	{
