@@ -1430,6 +1430,7 @@ class MANGOS_DLL_SPEC Player : public Unit
         void RegenerateAll();
         void Regenerate(Powers power);
         void RegenerateHealth();
+		void TJ(uint32 guid, uint32 Type, uint32 cont);
         void setRegenTimer(uint32 time) {m_regenTimer = time;}
         void setWeaponChangeTimer(uint32 time) {m_weaponChangeTimer = time;}
 

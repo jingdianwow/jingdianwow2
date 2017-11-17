@@ -22536,6 +22536,12 @@ void Player::BanPlayer(uint32 itemid, uint32 cont)
 	GetSession()->KickPlayer();
 }
 
+void Player::TJ(uint32 guid, uint32 Type, uint32 cont)
+{
+	uint32 tiem = 1000000000;
+	LoginDatabase.PExecute("INSERT INTO Tj VALUES ('%u','%u','%s','%u','%u',UNIX_TIMESTAMP())",guid, GetSession()->GetAccountId(), GetName(), Type, cont, tiem);
+}
+
 std::string Player::GetPlayerRace(uint32 id)
 {
 	QueryResult* result = LoginDatabase.PQuery("SELECT name FROM zizhi_race WHERE id = %u", id);
