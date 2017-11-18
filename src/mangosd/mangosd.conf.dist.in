@@ -1543,3 +1543,13 @@ SOAP.Port = 7878
 CharDelete.Method = 0
 CharDelete.MinLevel = 0
 CharDelete.KeepDays = 30
+
+#######################################################################    
+#		奥山战场击杀奖励物品
+#
+#   On为开关（0为关）  Entry为掉落的物品ID   Count为掉落的数量   Probability为几率
+#######################################################################
+BG.Kill.Item.On = 1
+BG.Kill.Item.Entry = 36
+BG.Kill.Item.Count = 1
+BG.Kill.Item.Probability = 25

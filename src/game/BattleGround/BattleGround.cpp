@@ -35,6 +35,7 @@
 #include "Formulas.h"
 #include "GridNotifiersImpl.h"
 #include "Chat.h"
+#include "Config/Config.h"
 
 namespace MaNGOS
 {
@@ -1857,6 +1858,34 @@ void BattleGround::HandleKillPlayer(Player* player, Player* killer)
 {
     // add +1 deaths
     UpdatePlayerScore(player, SCORE_DEATHS, 1);
+	uint32 BG_Kill_Item_On = sConfig.GetIntDefault("BG.Kill.Item.On", 0);
+	uint32 BG_Kill_Item_Entry = sConfig.GetIntDefault("BG.Kill.Item.Entry", 0);
+	uint32 BG_Kill_Item_Count = sConfig.GetIntDefault("BG.Kill.Item.Count", 0);
+	uint32 BG_Kill_Item_Probability = sConfig.GetIntDefault("BG.Kill.Item.Probability", 25);
+
+	if (BG_Kill_Item_On == 1)
+	{
+		BattleGround* bg = player->GetBattleGround();
+		if (bg->GetTypeID() == BATTLEGROUND_AV)
+		{
+			if (killer->GetSession()->GetRemoteAddress() != player->GetSession()->GetRemoteAddress() && !player->HasAura(SPELL_ID_PASSIVE_RESURRECTION_SICKNESS))
+			{
+				if (killer->getLevel() < (player->getLevel() + 5))
+				{
+					if (player)
+					{
+						if (player != killer)
+						{
+							if (urand(0, 100) < BG_Kill_Item_Probability)
+							{
+								killer->AddItem(BG_Kill_Item_Entry, BG_Kill_Item_Count);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
     // add +1 kills to group and +1 killing_blows to killer
     if (killer)
