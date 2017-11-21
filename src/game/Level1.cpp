@@ -609,7 +609,7 @@ bool ChatHandler::HandleGonameCommand(char* args)
             }
         }
 
-        //PSendSysMessage(LANG_APPEARING_AT, chrNameLink.c_str());ÆÁ±Î×·×ÙÌáÊ¾
+        PSendSysMessage(LANG_APPEARING_AT, chrNameLink.c_str());
         if (needReportToTarget(target))
             ChatHandler(target).PSendSysMessage(LANG_APPEARING_TO, GetNameLink().c_str());
 
