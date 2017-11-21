@@ -1553,3 +1553,10 @@ BG.Kill.Item.On = 1
 BG.Kill.Item.Entry = 36
 BG.Kill.Item.Count = 1
 BG.Kill.Item.Probability = 25
+
+##############################
+#
+#   团队人数低于30不产生掉落(0为关)
+#    奥尼克希亚副本
+##############################
+Onyxia'sLair.On = 1

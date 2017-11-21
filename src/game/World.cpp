@@ -843,6 +843,7 @@ void World::LoadConfigSettings(bool reload)
 	setConfig(CREATURE_ELITE_RARE_RARE, "Rate.Creature.Rare.Time", 10);
 	//Custom
 	setConfig(CONFIG_BOOL_GUILD, "Battleground.Guild.On", false);
+	setConfig(CONFIG_BOOL_ONYXIA, "Onyxia'sLair.On", false);
 
 	setConfig(CONFIG_BOOL_OUTDOORPVP_TS_ENABLED,                       "OutdoorPvP.TSEnabled", true);
 	setConfig(CONFIG_BOOL_OUTDOORPVP_ZG_ENABLED,                       "OutdoorPvP.ZUGEnabled", true);

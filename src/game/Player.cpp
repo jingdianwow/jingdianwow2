@@ -6552,6 +6552,14 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
     if (!zone)
         return;
 
+	if (sWorld.getConfig(CONFIG_BOOL_ONYXIA) == false)
+	{
+		if (GetMapId() == 249)
+		{
+			ChatHandler(this).PSendSysMessage(LANG_GROUP_4);
+		}
+	}
+
     if (m_zoneUpdateId != newZone)
     {
         // handle outdoor pvp zones
@@ -7661,6 +7669,14 @@ void Player::SendLoot(ObjectGuid guid, LootType loot_type)
 						{
 							if (Group* pGroupa = GetGroup())
 							{
+								if (sWorld.getConfig(CONFIG_BOOL_ONYXIA) == false)
+								{
+									if (GetMapId() == 249 && pGroupa->GetMembersCount() < 30)
+									{
+										ChatHandler(this).PSendSysMessage(LANG_GROUP_4);
+										return;
+									}
+								}
 								for (GroupReference* itra = pGroupa->GetFirstMember(); itra != NULL; itra = itra->next())
 								{
 									Player* pPlayera = itra->getSource();

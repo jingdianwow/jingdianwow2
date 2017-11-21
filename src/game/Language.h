@@ -1505,5 +1505,6 @@ enum MangosStrings
 	LANG_GROUP_1                        = 90001,
 	LANG_GROUP_2                        = 90002,
 	LANG_GROUP_3                        = 90003,
+	LANG_GROUP_4						= 90005,
 };
 #endif
