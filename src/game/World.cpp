@@ -1670,6 +1670,7 @@ void World::Update(uint32 diff)
 			LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11055);
 			LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11056);
 			LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11063);
+			sLog.outString(">> Week Quest Reset.");
 			//ServerMaintenanceStart();
 			//sObjectMgr.LoadStandingList();
 			m_MaintenanceTimeChecker = 600000;
