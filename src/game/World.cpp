@@ -1666,7 +1666,9 @@ void World::Update(uint32 diff)
 	{
 		if (m_MaintenanceTimeChecker < diff)
 		{
-			sWorld.ShutdownServ(1, SHUTDOWN_MASK_RESTART, 2);
+			sWorld.ShutdownServ(30, SHUTDOWN_MASK_RESTART, 2);
+			LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11055);
+			LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11056);
 			//ServerMaintenanceStart();
 			//sObjectMgr.LoadStandingList();
 			m_MaintenanceTimeChecker = 600000;
