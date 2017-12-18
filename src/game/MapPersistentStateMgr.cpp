@@ -562,7 +562,14 @@ void DungeonResetScheduler::Update()
                 time_t next_reset = DungeonResetScheduler::CalculateNextResetTime(instanceTemplate, resetTime);
 
                 CharacterDatabase.DirectPExecute("UPDATE instance_reset SET resettime = '" UI64FMTD "' WHERE mapid = '%u'", uint64(next_reset), uint32(event.mapid));
-				
+				if (event.mapid == 534)
+				{
+					sWorld.SetHuoLib(uint64(next_reset));
+					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11057);
+					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11058);
+					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11059);
+					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11060);
+				}
 				if (event.mapid == 469)
 				{
 					CharacterDatabase.PExecute("DELETE FROM instancespell_Chromaggus WHERE mapid = '%u'", event.mapid);
