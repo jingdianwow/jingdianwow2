@@ -571,7 +571,6 @@ void DungeonResetScheduler::Update()
 					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11060);
 					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11061);
 					LoginDatabase.PExecute("DELETE from character_queststatus WHERE quest = '%u'", 11062);
-					sLog.outString(">> Daily Quest Reset.");
 				}
 				if (event.mapid == 469)
 				{
