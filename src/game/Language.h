@@ -1426,6 +1426,10 @@ enum MangosStrings
 	LANG_JIAOBEN_22                     = 20022,
 	LANG_JIAOBEN_23                     = 20023,
 	LANG_JIAOBEN_24                     = 20024,
+	LANG_JIAOBEN_25 = 20025,
+	LANG_JIAOBEN_26 = 20026,
+	LANG_JIAOBEN_27 = 20027,
+	LANG_JIAOBEN_28 = 20028,
 
 	LANG_BG_WS_1                        = 30001,
 	LANG_BG_WS_2                        = 30002,
