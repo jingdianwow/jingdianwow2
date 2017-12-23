@@ -6559,6 +6559,13 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
 			ChatHandler(this).PSendSysMessage(LANG_GROUP_4);
 		}
 	}
+	if (GetZoneId() == 876)
+	{
+		if (m_session->GetSecurity() == SEC_PLAYER)
+		{
+			TeleportToHomebind();
+		}
+	}
 
     if (m_zoneUpdateId != newZone)
     {
