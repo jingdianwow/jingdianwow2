@@ -794,6 +794,13 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 		pCurrChar->RemoveAurasDueToSpell(26476);
 		pCurrChar->NearTeleportTo(-8570.2998f, 1991.2600f, 100.4000f, 3.44000f);
 	}
+	if (pCurrChar->GetZoneId() == 876)
+	{
+		if (GetSecurity() == SEC_PLAYER)
+		{
+			pCurrChar->TeleportToHomebind();
+		}
+	}
 
     m_playerLoading = false;
     delete holder;

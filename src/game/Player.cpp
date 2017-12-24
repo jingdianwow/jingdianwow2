@@ -6559,14 +6559,7 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
 			ChatHandler(this).PSendSysMessage(LANG_GROUP_4);
 		}
 	}
-	if (GetZoneId() == 876)
-	{
-		if (m_session->GetSecurity() == SEC_PLAYER)
-		{
-			TeleportToHomebind();
-		}
-	}
-
+	
     if (m_zoneUpdateId != newZone)
     {
         // handle outdoor pvp zones
@@ -6631,6 +6624,14 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
     // if player resurrected at teleport this will be applied in resurrect code
     if (isAlive())
         DestroyZoneLimitedItem(true, newZone);
+
+	if (GetZoneId() == 876)
+	{
+		if (m_session->GetSecurity() == SEC_PLAYER)
+		{
+			TeleportTo(1, -7177.103f, -3788.077f, 8.370f, 3.44000f);
+		}
+	}
 
     // recent client version not send leave/join channel packets for built-in local channels
     UpdateLocalChannels(newZone);
