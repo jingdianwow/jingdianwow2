@@ -6625,14 +6625,6 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
     if (isAlive())
         DestroyZoneLimitedItem(true, newZone);
 
-	if (GetZoneId() == 876)
-	{
-		if (m_session->GetSecurity() == SEC_PLAYER)
-		{
-			TeleportTo(1, -7177.103f, -3788.077f, 8.370f, 3.44000f);
-		}
-	}
-
     // recent client version not send leave/join channel packets for built-in local channels
     UpdateLocalChannels(newZone);
 
