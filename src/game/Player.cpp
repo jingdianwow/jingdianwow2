@@ -1141,7 +1141,23 @@ void Player::Update(uint32 update_diff, uint32 p_time)
 {
     if (!IsInWorld())
         return;
-
+	if (InBattleGround())
+	{
+		if (HasAura(23333) || HasAura(23335))
+		{
+			if (HasAura(3169))
+			{
+				if (HasAura(23333))
+				{
+					RemoveAurasDueToSpell(23333);
+				}
+				if (HasAura(23335))
+				{
+					RemoveAurasDueToSpell(23335);
+				}
+			}			
+		}
+	}
     // Undelivered mail
     if (m_nextMailDelivereTime && m_nextMailDelivereTime <= time(NULL))
     {
