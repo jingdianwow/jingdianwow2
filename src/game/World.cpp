@@ -1706,8 +1706,8 @@ void World::Update(uint32 diff)
 	{
 		if (battleground_time_End2 <= GetGameTime())
 		{
-			LoginDatabase.PExecute("UPDATE characters_battleground SET battleground= '%u', battlegroundtime_start = '%u', battlegroundtime_end = '%u' WHERE id = '%u'", 1, 1, 1, 1);
-			LoginDatabase.PExecute("UPDATE characters_battleground SET battleground= '%u', battlegroundtime_start = '%u', battlegroundtime_end = '%u' WHERE id = '%u'", 1, 1, 1, 3);
+			LoginDatabase.PExecute("UPDATE characters_battleground SET battleground= '%u', battlegroundtime_start = '%u', battlegroundtime_end = '%u' WHERE id = '%u'", 0, 0, 0, 1);
+			LoginDatabase.PExecute("UPDATE characters_battleground SET battleground= '%u', battlegroundtime_start = '%u', battlegroundtime_end = '%u' WHERE id = '%u'", 0, 0, 0, 3);
 			battleground_time_Start1 = 0;
 			battleground_time_End1 = 0;
 			battleground_time_Start2 = 0;
