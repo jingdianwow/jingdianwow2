@@ -398,7 +398,7 @@ LootSlotType LootItem::GetSlotTypeForSharedLoot(PermissionTypes permission, Play
         case OWNER_PERMISSION:
             return LOOT_SLOT_NORMAL;
         case GROUP_PERMISSION:
-			return (is_blocked || is_underthreshold) ? LOOT_SLOT_NORMAL : LOOT_SLOT_VIEW;
+            return LOOT_SLOT_VIEW;
         case MASTER_PERMISSION:
             return !is_underthreshold ? LOOT_SLOT_MASTER : LOOT_SLOT_NORMAL;
         default:
