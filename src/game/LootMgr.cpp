@@ -25,6 +25,7 @@
 #include "SharedDefines.h"
 #include "DBCStores.h"
 #include "SQLStorages.h"
+#include "Config/Config.h"
 
 static eConfigFloatValues const qualityToRate[MAX_ITEM_QUALITY] =
 {
@@ -398,7 +399,14 @@ LootSlotType LootItem::GetSlotTypeForSharedLoot(PermissionTypes permission, Play
         case OWNER_PERMISSION:
             return LOOT_SLOT_NORMAL;
         case GROUP_PERMISSION:
-            return LOOT_SLOT_VIEW;
+			if (sConfig.GetBoolDefault("Loot.Enable", false))
+			{
+				return (is_blocked || is_underthreshold) ? LOOT_SLOT_NORMAL : LOOT_SLOT_VIEW;
+			}
+			else
+			{
+				return LOOT_SLOT_VIEW;
+			}            
         case MASTER_PERMISSION:
             return !is_underthreshold ? LOOT_SLOT_MASTER : LOOT_SLOT_NORMAL;
         default:
