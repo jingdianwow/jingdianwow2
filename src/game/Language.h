@@ -1258,7 +1258,7 @@ enum MangosStrings
 
 	ZHANYOU_MAIL_1                      = 6501,
 	ZHANYOU_MAIL_2                      = 6502,
-	CARD_TIME							= 6503,
+
 	ZHANYOU_TIME_1                      = 6701,
 	ZHANYOU_TIME_2                      = 6702,
 	ZHANYOU_TIME_3                      = 6703,

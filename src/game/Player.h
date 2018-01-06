@@ -690,11 +690,6 @@ enum PlayeSAFE
 	PLAYER_SAFE = 0
 };
 
-enum PlayeCard
-{
-	PLAYER_CARD_TIME = 0
-};
-
 #define MAX_PLAYED_TIME_INDEX   2
 #define MAX_PLAYED_TIME_INDEXX  3
 #define MAX_PLAYED_GONGNENG     20
@@ -702,7 +697,6 @@ enum PlayeCard
 #define MAX_PLAYED_GUIID        3
 #define MAX_PLAYED_MODELID      1
 #define MAX_PLAYED_SAFE         1
-#define MAX_PLAYED_CARD         1
 
 // used at player loading query list preparing, and later result selection
 enum PlayerLoginQueryIndex
@@ -1030,7 +1024,6 @@ class MANGOS_DLL_SPEC Player : public Unit
 		uint32 GetShuangTfCont() { return m_Player_GongNeng[PLAYED_SHUANGTIANFU_CONT]; }
 		uint32 GetShuangTftime() { return m_Player_GongNeng[PLAYED_SHUANGTIANFU_TIME]; }
 		uint32 GetShuangYeJiNengCont() { return m_Player_GongNeng[PLAYED_SHANGYEJINENGCONT]; }
-		uint32 GetCardtime() { return m_Player_Card[PLAYER_CARD_TIME]; }
 
 		uint32 m_Player_Instances[MAX_PLAYED_INSTANCES];
 		uint32 GetPlayerInstancesCont() { return m_Player_Instances[PLAYED_INSTANCES_CONT]; }
@@ -1045,7 +1038,6 @@ class MANGOS_DLL_SPEC Player : public Unit
 		uint32 GetPlayerModelId() { return m_Player_ModelId[PLAYER_MODELID]; }
 
 		uint32 m_Player_SAFE[MAX_PLAYED_SAFE];
-		uint32 m_Player_Card[MAX_PLAYED_CARD];
 		uint32 GetPlayerSafe() { return m_Player_SAFE[PLAYER_SAFE]; }
 
         void SetDeathState(DeathState s) override;          // overwrite Unit::SetDeathState
@@ -1130,7 +1122,6 @@ class MANGOS_DLL_SPEC Player : public Unit
 		void Setshunfei();
 		void SetCdspeed();
 		void SetTowTf();
-		void SetCardTime();
 		void SetMoneyZheKoua(uint32 ItemId1, uint32 Itemcont1, uint32 ItemId2, uint32 Itemcont2);
 		void SetHuoLiZheKoua(uint32 ItemId, uint32 Itemcont);
 		void SetCdSuoDuan(uint32 ItemId1, uint32 Itemcont1, uint32 ItemId2, uint32 Itemcont2);
@@ -1880,7 +1871,6 @@ class MANGOS_DLL_SPEC Player : public Unit
         uint32 GetCorpseReclaimDelay(bool pvp) const;
 		uint32 Getjifen() const;
 		uint32 GetSafe() const;
-		uint32 GetCard() const;
 		std::string GetSafePass() const;
 		uint32 GetVip(uint32 canshu) const;
 		uint32 GetGongNeng(uint32 canshu) const;
@@ -1903,7 +1893,6 @@ class MANGOS_DLL_SPEC Player : public Unit
         void UpdateCorpseReclaimDelay();
 		void Setjifen(int32 jifen);
 		void SetSafe(uint32 canshu);
-		void SetCard(int32 cont, int32 d);
 		void SetSafePass(std::string canshu);
 		void SetVip(int32 cont, int32 canshu);
 		void SetGongNeng(int32 cont, int32 canshu);

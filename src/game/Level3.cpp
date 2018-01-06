@@ -6725,10 +6725,8 @@ bool ChatHandler::HandleChaXunCommand(char* args)
 {
 	Player* player = m_session->GetPlayer();
 
-	if (player->GetPlayerMoneyLevel() >= 1 || player->GetPlayerCdSuoDuanLevel() >= 1 || player->GetPlayerCdChongZhiLevel() >= 1 || player->GetShuangTfLevel() >= 1 || player->GetPlayerGuiIdMianFei() > 0 || player->GetPlayerGuiIdShouFei() > 0 || player->GetPlayerGuiIdMianFeiTime() > 0 || player->GetCard() > 0)
+	if (player->GetPlayerMoneyLevel() >= 1 || player->GetPlayerCdSuoDuanLevel() >= 1 || player->GetPlayerCdChongZhiLevel() >= 1 || player->GetShuangTfLevel() >= 1 || player->GetPlayerGuiIdMianFei() > 0 || player->GetPlayerGuiIdShouFei() > 0 || player->GetPlayerGuiIdMianFeiTime() > 0)
 	{
-		if (player->GetCardtime() >= sWorld.GetGameTime())
-			ChatHandler(player).PSendSysMessage(CARD_TIME, player->GetDaysTime(player->GetCardtime(), 1), player->GetDaysTime(player->GetCardtime(), 2), player->GetDaysTime(player->GetCardtime(), 3), player->GetDaysTime(player->GetCardtime(), 4));
 		if (player->GetPlayerMoneyLevel() >= 1)
 		    if (player->GetPlayerMoneyTime() >= sWorld.GetGameTime())
 			    ChatHandler(player).PSendSysMessage(ZHANYOU_TIME_1, player->GetDaysTime(player->GetPlayerMoneyTime(), 1), player->GetDaysTime(player->GetPlayerMoneyTime(), 2), player->GetDaysTime(player->GetPlayerMoneyTime(), 3), player->GetDaysTime(player->GetPlayerMoneyTime(), 4));

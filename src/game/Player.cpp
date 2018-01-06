@@ -63,7 +63,6 @@
 #include "AccountMgr.h"
 #include "AutoAIoncharm/AutoAIoncharm.h"
 #include "WorldSession.h"
-#include "Config/Config.h"
 #include <cmath>
 
 #define ZONE_UPDATE_INTERVAL (1*IN_MILLISECONDS)
@@ -708,7 +707,6 @@ bool Player::Create(uint32 guidlow, const std::string& name, uint8 race, uint8 c
 	m_Player_ModelId[PLAYER_MODELID] = 0;
 
 	m_Player_SAFE[PLAYER_SAFE] = 0;
-	m_Player_Card[PLAYER_CARD_TIME] = 0;
 
     // base stats and related field values
     InitStatsForLevel();
@@ -1163,19 +1161,6 @@ void Player::Update(uint32 update_diff, uint32 p_time)
 
     time_t now = time(NULL);
 
-	if (sConfig.GetBoolDefault("Custom.Card.On", false) && isAlive())
-	{
-		if ((int32(GetCard())) == 0)
-		{
-			time_t now = time(NULL);
-			uint32 CardTime = uint32(sConfig.GetIntDefault("Custom.Card.Time", 60));
-			if (now >= m_getLastMbTime + CardTime)
-			{				
-				GetSession()->KickPlayer();
-			}
-		}
-	}
-
     UpdatePvPFlag(now);
 
     UpdateContestedPvP(update_diff);
@@ -1403,15 +1388,6 @@ void Player::Update(uint32 update_diff, uint32 p_time)
 				m_Player_GongNeng[PLAYED_SHUANGTIANFU] = 0;
 				m_Player_GongNeng[PLAYED_SHUANGTIANFU_CONT] = 0;
 				m_Player_GongNeng[PLAYED_SHUANGTIANFU_TIME] = 0;
-				SaveToDB();
-			}
-		}
-
-		if (GetCardtime() >= 1)
-		{
-			if (GetCardtime() <= sWorld.GetGameTime())
-			{
-				m_Player_Card[PLAYER_CARD_TIME] = 0;
 				SaveToDB();
 			}
 		}
@@ -15239,7 +15215,6 @@ bool Player::LoadFromDB(ObjectGuid guid, SqlQueryHolder* holder)
 	m_Player_ModelId[PLAYER_MODELID] = GetVip(25);
 
 	m_Player_SAFE[PLAYER_SAFE] = GetSafe();
-	m_Player_Card[PLAYER_CARD_TIME] = GetCard();
 
     m_resetTalentsCost = fields[24].GetUInt32();
     m_resetTalentsTime = time_t(fields[25].GetUInt64());
@@ -16548,7 +16523,6 @@ void Player::SaveToDB()
 	SetVip(m_Player_ModelId[PLAYER_MODELID], 25);
 
 	SetSafe(m_Player_SAFE[PLAYER_SAFE]);
-	SetCard(m_Player_Card[PLAYER_CARD_TIME],1);
 
     uberInsert.addFloat(finiteAlways(m_rest_bonus));
     uberInsert.addUInt64(uint64(time(NULL)));
@@ -19920,21 +19894,6 @@ uint32 Player::GetCorpseReclaimDelay(bool pvp) const
     return corpseReclaimDelay[count];
 }
 
-uint32 Player::GetCard() const
-{
-	QueryResult* result = LoginDatabase.PQuery("SELECT Card FROM account WHERE id = %u", GetSession()->GetAccountId());
-	if (result)
-	{
-		Field *fields = result->Fetch();
-		uint32 Card = fields[0].GetUInt32();
-		delete result;
-		return Card;
-		
-	}
-	delete result;
-	return 0;
-}
-
 uint32 Player::GetVip(uint32 canshu) const
 {
     QueryResult* result = LoginDatabase.PQuery("SELECT moneylevel, moneytime, huolilevel, huolitime, addhuolilevel, addhuolitime, tianfulevel, tianfutime, bianshenlevel, bianshentime, cdsuoduanlevel, cdsuoduantime, cdchongzhilevel, cdchongzhitime, shuangtianfulevel, shuangtianfucont, shuangtianfutime, shangyejinengxuexicont, mianfei, shoufei, mianfeitime, libaocont, InstancesCont, InstancesTime, modelid, feijidian, mianfeishunfei FROM characters_vip WHERE guid = %u", GetGUIDLow());
@@ -20132,15 +20091,6 @@ uint32 Player::GetVip(uint32 canshu) const
     }
     delete result;
     return 0;
-}
-
-void Player::SetCard(int32 cont, int32 d)
-{
-	if (d == 1)
-	{
-		LoginDatabase.PExecute("UPDATE account SET Card= '%u' WHERE id = '%u'", cont, GetSession()->GetAccountId());
-		LoginDatabase.CommitTransaction();
-	}
 }
 
 void Player::SetVip(int32 cont, int32 canshu)
@@ -22759,23 +22709,6 @@ void Player::SetCdspeed()
 		SaveToDB();
 		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
 	}
-}
-
-void Player::SetCardTime()
-{
-	if (GetCardtime() > 0)
-	{
-		m_Player_Card[PLAYER_CARD_TIME] += TIME;
-		SaveToDB();
-		ChatHandler(this).PSendSysMessage(LANG_VIP_3);
-	}
-	else
-		if (GetCardtime() == 0)
-		{
-			m_Player_Card[PLAYED_SHUANGTIANFU_TIME] = sWorld.GetGameTime() + TIME;
-			SaveToDB();
-			ChatHandler(this).PSendSysMessage(LANG_VIP_3);
-		}
 }
 
 void Player::SetTowTf()
