@@ -40,6 +40,7 @@
 #include "Chat.h"
 #include "SpellMgr.h"
 #include "AccountMgr.h"
+#include "Config/Config.h"
 
 // config option SkipCinematics supported values
 enum CinematicsSkipMode
@@ -795,6 +796,18 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 		pCurrChar->NearTeleportTo(-8570.2998f, 1991.2600f, 100.4000f, 3.44000f);
 	}
 
+	if (sConfig.GetBoolDefault("Custom.Card.On", false))
+	{
+		if ((int32(pCurrChar->GetCard())) <= (int32(sWorld.GetGameTime() + 600)) && !pCurrChar->GetCard() == 0)
+		{
+			ChatHandler(this).PSendSysMessage(6504);
+		}
+		if ((int32(pCurrChar->GetCard())) == 0)
+		{
+			ChatHandler(this).PSendSysMessage(6505);
+		}
+	}
+	
     m_playerLoading = false;
     delete holder;
 }
