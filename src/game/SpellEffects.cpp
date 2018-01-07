@@ -5026,6 +5026,20 @@ void Spell::EffectReputation(SpellEffectIndex eff_idx)
 				return;
 			}
 			break;
+		case 30046:
+			if (_player->GetCard() > sWorld.GetGameTime())
+			{
+				_player->m_Player_Card[PLAYER_CARD_TIME] += 700;
+				_player->SaveToDB();
+				return;
+			}
+			else
+			{
+				_player->m_Player_Card[PLAYER_CARD_TIME] = sWorld.GetGameTime() + 700;
+				_player->SaveToDB();
+				return;
+			}
+			break;
 		case 30048:
 			if (_player->GetShuangTfLevel() >= 1)
 			{
