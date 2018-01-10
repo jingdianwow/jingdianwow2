@@ -634,7 +634,6 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
     Sha1Hash sha1;
     BigNumber v, s, g, N, K;
 	uint32 jifen;
-	uint32 Card;
     WorldPacket packet, SendAddonPacked;
 
     // Read the content of the packet
@@ -678,8 +677,7 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
                              "s, "                       // 6
                              "mutetime, "                // 7
 							 "locale, "                   // 8
-							 "jifen, "                       //9
-							 "Card "						 // 10
+							 "jifen "                       //9
                              "FROM account "
                              "WHERE username = '%s'",
                              safe_account.c_str());
@@ -742,7 +740,6 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
     if (locale >= MAX_LOCALE)
         locale = LOCALE_enUS;
 	jifen = fields[9].GetUInt32();
-	Card = fields[10].GetUInt32();
     delete result;
 
     // Re-check account ban (same check as in realmd)
