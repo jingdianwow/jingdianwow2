@@ -804,7 +804,7 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 		}
 		if ((int32(pCurrChar->GetCard())) == 0)
 		{
-			ChatHandler(this).PSendSysMessage(6505);			
+			ChatHandler(this).PSendSysMessage(6505);
 		}
 	}
 	

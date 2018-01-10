@@ -1181,35 +1181,13 @@ void Player::Update(uint32 update_diff, uint32 p_time)
 
 	if (sConfig.GetBoolDefault("Custom.Card.On", false) && isAlive())
 	{
-		if (!isGameMaster())
+		if ((int32(GetCard())) == 0)
 		{
-			if (GetCard() == (int32(sWorld.GetGameTime() + 600)))
-			{
-				ChatHandler(this).PSendSysMessage(6506);
-			}
-			else if (GetCard() == (int32(sWorld.GetGameTime() + 300)))
-			{
-				ChatHandler(this).PSendSysMessage(6507);
-			}
-			else if (GetCard() == (int32(sWorld.GetGameTime() + 60)))
-			{
-				ChatHandler(this).PSendSysMessage(6508);
-			}
-			else if ((int32(GetCard())) == 0)
-			{
-				int32 map = GetMapId();
-				float old_x = GetPositionX();
-				float old_y = GetPositionY();
-				float old_z = GetPositionZ();
-				if (IsTaxiFlying())
-				{
-					m_taxi.ClearTaxiDestinations();
-					Unmount();
-					KillPlayer();
-					GetSession()->KickPlayer();
-				}
-				TeleportTo(map, old_x, old_y, old_z, 0);
-
+			time_t now = time(NULL);
+			uint32 CardTime = uint32(sConfig.GetIntDefault("Custom.Card.Time", 60));
+			if (now >= m_getLastMbTime + CardTime)
+			{				
+				GetSession()->KickPlayer();
 			}
 		}
 	}
