@@ -7829,7 +7829,7 @@ bool ChatHandler::HandleAddzcCommand(char* args)
 		{
 			if (sWorld.getConfig(CONFIG_BOOL_ZHANGE) == false)
 			{
-				if (player->getLevel() < 45)
+				if (player->getLevel() != 60)
 				{
 					SendSysMessage(LANG_BG_WS_5);
 					SetSentErrorMessage(true);
@@ -7856,7 +7856,7 @@ bool ChatHandler::HandleAddzcCommand(char* args)
 			{
 				if (sWorld.getConfig(CONFIG_BOOL_ALX) == false)
 				{
-					if (player->getLevel() < 45)
+					if (player->getLevel() != 60)
 					{
 						SendSysMessage(LANG_BG_WS_5);
 						SetSentErrorMessage(true);
@@ -7882,7 +7882,7 @@ bool ChatHandler::HandleAddzcCommand(char* args)
 			{
 				if (sWorld.getConfig(CONFIG_BOOL_AOSHAN) == false)
 				{
-					if (player->getLevel() < 60)
+					if (player->getLevel() != 60)
 					{
 						SendSysMessage(LANG_BG_WS_5);
 						SetSentErrorMessage(true);
@@ -7920,7 +7920,7 @@ bool ChatHandler::HandleAddzcCommand(char* args)
 		{
 			if (sWorld.getConfig(CONFIG_BOOL_ZHANGE) == false)
 			{
-				if (player->getLevel() < 45)
+				if (player->getLevel() != 60)
 				{
 					SendSysMessage(LANG_BG_WS_5);
 					SetSentErrorMessage(true);
@@ -7946,7 +7946,7 @@ bool ChatHandler::HandleAddzcCommand(char* args)
 			{
 				if (sWorld.getConfig(CONFIG_BOOL_ALX) == false)
 				{
-					if (player->getLevel() < 45)
+					if (player->getLevel() != 60)
 					{
 						SendSysMessage(LANG_BG_WS_5);
 						SetSentErrorMessage(true);
@@ -7972,7 +7972,7 @@ bool ChatHandler::HandleAddzcCommand(char* args)
 				{
 					if (sWorld.getConfig(CONFIG_BOOL_AOSHAN) == false)
 					{
-						if (player->getLevel() < 60)
+						if (player->getLevel() != 60)
 						{
 							SendSysMessage(LANG_BG_WS_5);
 							SetSentErrorMessage(true);
