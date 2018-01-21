@@ -887,7 +887,7 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
             }
         }
         else                                                // Killed creature
-            JustKilledCreature((Creature*)pVictim, player_tap);
+			JustKilledCreature((Creature*)pVictim, player_tap ? player_tap : NULL);
     }
     else                                                    // if (health <= damage)
     {
