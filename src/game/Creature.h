@@ -477,6 +477,8 @@ class MANGOS_DLL_SPEC Creature : public Unit
 
     public:
 
+		bool hasBeenLootedOnce;
+		uint32 assignedLooter;
         explicit Creature(CreatureSubtype subtype = CREATURE_SUBTYPE_GENERIC);
         virtual ~Creature();
 
@@ -692,6 +694,8 @@ class MANGOS_DLL_SPEC Creature : public Unit
 
         uint32 GetRespawnDelay() const { return m_respawnDelay; }
         void SetRespawnDelay(uint32 delay) { m_respawnDelay = delay; }
+		time_t GetKilledTime() const { return m_killedTime; }
+		void SetKilledTime(time_t time) { m_killedTime = time; }
 
         float GetRespawnRadius() const { return m_respawnradius; }
         void SetRespawnRadius(float dist) { m_respawnradius = dist; }
@@ -769,6 +773,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
         uint32 m_aggroDelay;                                // (msecs)delay between respawn and aggro due to movement
         float m_respawnradius;
 
+		time_t m_killedTime;
         CreatureSubtype m_subtype;                          // set in Creatures subclasses for fast it detect without dynamic_cast use
         void RegeneratePower();
         void RegenerateHealth();

@@ -897,6 +897,7 @@ class MANGOS_DLL_SPEC Player : public Unit
         explicit Player(WorldSession* session);
         ~Player();
 
+		time_t lastTimeLooted;
         void CleanupsBeforeDelete() override;
 
         static UpdateMask updateVisualBits;
@@ -2277,7 +2278,8 @@ class MANGOS_DLL_SPEC Player : public Unit
         GridReference<Player>& GetGridRef() { return m_gridRef; }
         MapReference& GetMapRef() { return m_mapRef; }
 
-        bool isAllowedToLoot(Creature* creature);
+		bool IsTappedByMeOrMyGroup(Creature* creature);
+		bool isAllowedToLoot(Creature* creature);
 
 		void PlayerLogin();
 		std::string GetPlayerRace(uint32 id);
