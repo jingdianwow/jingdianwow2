@@ -2155,7 +2155,7 @@ class MANGOS_DLL_SPEC Player : public Unit
         float GetTransOffsetZ() const { return m_movementInfo.GetTransportPos()->z; }
         float GetTransOffsetO() const { return m_movementInfo.GetTransportPos()->o; }
         uint32 GetTransTime() const { return m_movementInfo.GetTransportTime(); }
-
+		uint32 HasUnitMovementFlag(uint32 f) const { return m_movementInfo.moveFlags & f; }
         uint32 GetSaveTimer() const { return m_nextSave; }
         void   SetSaveTimer(uint32 timer) { m_nextSave = timer; }
 

@@ -32,6 +32,7 @@
 #include "World.h"
 #include "SpellMgr.h"
 #include "Spell.h"
+#include "AnticheatMgr.h"
 
 //#define __ANTI_DEBUG__
 
@@ -511,6 +512,12 @@ void WorldSession::HandleMovementOpcodes(WorldPacket& recv_data)
     // fall damage generation (ignore in flight case that can be triggered also at lags in moment teleportation to another map).
     if (opcode == MSG_MOVE_FALL_LAND && plMover && !plMover->IsTaxiFlying())
         plMover->HandleFall(movementInfo);
+
+	if (plMover)
+	{
+		if (!plMover->isGameMaster())
+			sAnticheatMgr->StartHackDetection(plMover, movementInfo, opcode);
+	}
 
     /* process position-change */
 	HandleMoverRelocation(movementInfo, opcode);

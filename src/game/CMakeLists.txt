@@ -284,6 +284,10 @@ set(SRC_GRP_WORLD_HANDLERS
     Chat.cpp
     Chat.h
     ChatHandler.cpp
+	AnticheatData.cpp
+	AnticheatData.h
+	AnticheatMgr.cpp
+	AnticheatMgr.h
     CombatHandler.cpp
     CreatureLinkingMgr.cpp
     CreatureLinkingMgr.h

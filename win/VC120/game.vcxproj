@@ -340,6 +340,8 @@
     <ClCompile Include="..\..\src\game\AccountMgr.cpp" />
     <ClCompile Include="..\..\src\game\AddonHandler.cpp" />
     <ClCompile Include="..\..\src\game\AggressorAI.cpp" />
+    <ClCompile Include="..\..\src\game\AnticheatData.cpp" />
+    <ClCompile Include="..\..\src\game\AnticheatMgr.cpp" />
     <ClCompile Include="..\..\src\game\AuctionHouseBot\AuctionHouseBot.cpp" />
     <ClCompile Include="..\..\src\game\AuctionHouseHandler.cpp" />
     <ClCompile Include="..\..\src\game\AuctionHouseMgr.cpp" />
@@ -511,6 +513,8 @@
     <ClInclude Include="..\..\src\game\AccountMgr.h" />
     <ClInclude Include="..\..\src\game\AddonHandler.h" />
     <ClInclude Include="..\..\src\game\AggressorAI.h" />
+    <ClInclude Include="..\..\src\game\AnticheatData.h" />
+    <ClInclude Include="..\..\src\game\AnticheatMgr.h" />
     <ClInclude Include="..\..\src\game\AuctionHouseBot\AuctionHouseBot.h" />
     <ClInclude Include="..\..\src\game\AuctionHouseMgr.h" />
     <ClInclude Include="..\..\src\game\AutoAIoncharm\AutoAIoncharm.h" />

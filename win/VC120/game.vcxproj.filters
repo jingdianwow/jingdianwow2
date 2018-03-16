@@ -58,6 +58,9 @@
     <Filter Include="AutoAIoncharm">
       <UniqueIdentifier>{b70c6df9-d438-498e-898b-683643e2e2b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Anticheat">
+      <UniqueIdentifier>{6eb5985d-1491-451a-a384-4e009f09fb37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\game\AccountMgr.cpp">
@@ -550,6 +553,12 @@
     <ClCompile Include="..\..\src\game\MapUpdater.cpp">
       <Filter>World/Handlers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\AnticheatData.cpp">
+      <Filter>Anticheat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\AnticheatMgr.cpp">
+      <Filter>Anticheat</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\game\AccountMgr.h">
@@ -1035,6 +1044,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\MapUpdater.h">
       <Filter>World/Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\AnticheatData.h">
+      <Filter>Anticheat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\AnticheatMgr.h">
+      <Filter>Anticheat</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

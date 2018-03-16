@@ -355,6 +355,7 @@ enum DeathState
     CORPSE         = 2,                                     // corpse state, for player this also meaning that player not leave corpse
     DEAD           = 3,                                     // for creature despawned state (corpse despawned), for player CORPSE/DEAD not clear way switches (FIXME), and use m_deathtimer > 0 check for real corpse state
     JUST_ALIVED    = 4,                                     // temporary state at resurrection, for creature auto converted to ALIVE, for player at next update call
+	CORPSE_FALLING = 5                                      // corpse state in case when corpse still falling to ground
 };
 
 // internal state flags for some auras and movement generators, other.
@@ -619,7 +620,7 @@ class MovementInfo
         };
 
         JumpInfo const& GetJumpInfo() const { return jump; }
-    private:
+    //private:
         // common
         uint32   moveFlags;                                 // see enum MovementFlags
         uint32   time;
