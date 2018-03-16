@@ -1116,6 +1116,8 @@ class MANGOS_DLL_SPEC Player : public Unit
 		uint32 GetTaqQuestCompleteTime();
         bool CanNoReagentCast(SpellEntry const* spellInfo) const;
 		void SetplayerFaction(Player* _player, uint32 factionId, uint32 Reputation, uint32 playerjf);
+		void CustomSetReputation(Player* _player, uint32 factionId, int32 standing);
+		void SendCustomGlobalSysMessage(int32 string_id, ...);
 		void ShueiJiQuest(uint32 quest, uint32 money, Player* _player);
 		void GroupQuest(uint32 quest1, uint32 quest2, uint32 money, Player* _player, uint32 placout);
 		void HueiSitem(uint32 item1, uint32 item2, uint32 item3, uint32 item4, uint32 item5, uint32 item7, uint32 item8, uint32 item9, uint32 item11, uint32 cout, uint32 Class_, uint32 HasitemId1, uint32 Hascount1, Player *player, uint32 HasitemId, uint32 Hascount);
@@ -1403,6 +1405,7 @@ class MANGOS_DLL_SPEC Player : public Unit
         static uint32 GetLevelFromDB(ObjectGuid guid);
         static bool   LoadPositionFromDB(ObjectGuid guid, uint32& mapid, float& x, float& y, float& z, float& o, bool& in_flight);
 		static bool   LoadCharacterInstanceFromDB(ObjectGuid guid, uint32& instanceid);
+		void UnFB(Player* player, uint32 mapid);
 
         /*********************************************************/
         /***                   SAVE SYSTEM                     ***/

@@ -8560,6 +8560,36 @@ void Player::SetplayerFaction(Player* _player, uint32 factionId, uint32 Reputati
 	   GetSession()->SendNotification(LANG_CHANNEL_4);
 }
 
+void Player::CustomSetReputation(Player* _player, uint32 factionId, int32 standing)
+{
+	if (!factionId || !standing)
+		return;
+
+	FactionEntry const *factionEntry = sFactionStore.LookupEntry(factionId);
+
+	if (!factionEntry || factionEntry->reputationListID < 0)
+		return;
+	_player->GetReputationMgr().ModifyReputation(factionEntry, standing);
+}
+
+void Player::SendCustomGlobalSysMessage(int32 string_id, ...)
+{
+	char const* format = GetSession()->GetMangosString(string_id);
+	if (format)
+	{
+		va_list ap;
+		char szStr[1024];
+		szStr[0] = '\0';
+		va_start(ap, string_id);
+		vsnprintf(szStr, 1024, format, ap);
+		va_end(ap);
+
+		WorldPacket data(SMSG_NOTIFICATION, (strlen(szStr) + 1));
+		data << szStr;
+		sWorld.SendGlobalMessage(&data);
+	}
+}
+
 void Player::ShueiJiQuest(uint32 quest, uint32 money, Player* _player)
 {
 	if(_player->getLevel() == 60)
@@ -23322,4 +23352,37 @@ bool Player::LoadCharacterInstanceFromDB(ObjectGuid guid, uint32& instanceid)
 
 	delete result;
 	return true;
+}
+
+void Player::UnFB(Player* player, uint32 mapid)
+{
+	if (!player)
+		return;
+
+	uint32 counter = 0;
+	bool got_map = false;
+
+	Player::BoundInstancesMap& binds = player->GetBoundInstances();
+	for (Player::BoundInstancesMap::iterator itr = binds.begin(); itr != binds.end();)
+	{
+		if (got_map && mapid != itr->first)
+		{
+			++itr;
+			continue;
+		}
+		if (itr->first != player->GetMapId())
+		{
+			DungeonPersistentState* save = itr->second.state;
+			std::string timeleft = secsToTimeString(save->GetResetTime() - time(NULL), true);
+
+			if (const MapEntry* entry = sMapStore.LookupEntry(itr->first))
+			{
+				
+			}
+			player->UnbindInstance(itr);
+			counter++;
+		}
+		else
+			++itr;
+	}
 }

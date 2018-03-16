@@ -5082,6 +5082,26 @@ void Spell::EffectReputation(SpellEffectIndex eff_idx)
 				return;
 			}
 			break;
+		case 103010://BWL
+			if (_player->GetMapId() != 469)
+				_player->UnFB(_player, 469);
+			break;
+		case 103011://MC
+			if (_player->GetMapId() != 409)
+				_player->UnFB(_player, 409);
+			break;
+		case 103012://ZUG
+			if (_player->GetMapId() != 309)
+				_player->UnFB(_player, 309);
+			break;
+		case 103013://FX
+			if (_player->GetMapId() != 509)
+				_player->UnFB(_player, 509);
+			break;
+		case 103080://Onikxy
+			if (_player->GetMapId() != 249)
+				_player->UnFB(_player, 249);
+			break;
 		/*case 30149:
 			_player->AddPlayerAura(29534);
 			return;
