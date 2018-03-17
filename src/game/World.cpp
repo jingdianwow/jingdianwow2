@@ -888,6 +888,10 @@ void World::LoadConfigSettings(bool reload)
     setConfig(CONFIG_UINT32_TIMERBAR_BREATH_MAX,      "TimerBar.Breath.Max", 180);
     setConfig(CONFIG_UINT32_TIMERBAR_FIRE_GMLEVEL,    "TimerBar.Fire.GMLevel", SEC_CONSOLE);
     setConfig(CONFIG_UINT32_TIMERBAR_FIRE_MAX,        "TimerBar.Fire.Max", 1);
+	setConfig(CONFIG_BOOL_WORLD_PVP_ON, "World.PVP.On", false);
+	setConfig(CONFIG_BOOL_WORLD_CHAT_ON, "World.Chat.On", false);
+	setConfig(CONFIG_UINT32_JF_OR_MONEY, "Jf.Or.Money", 0);
+	setConfig(CONFIG_UINT32_CHAT_COUNT, "Chat.Count", 0);
 
     setConfig(CONFIG_BOOL_PET_UNSUMMON_AT_MOUNT,      "PetUnsummonAtMount", false);
 

@@ -874,6 +874,17 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
 
             if (player_tap)                                 // PvP kill
             {
+				if (sWorld.getConfig(CONFIG_BOOL_WORLD_PVP_ON))
+				{
+					AreaTableEntry const* areaEntry = GetAreaEntryByAreaID(pVictim->GetAreaId());
+					std::string uAreaName = "<unknown>";
+					if (areaEntry)
+						uAreaName = areaEntry->area_name[sWorld.GetDefaultDbcLocale()];
+					if (player_tap != pVictim)
+					{
+						player_tap->SendCustomGlobalSysMessage(4002, player_tap->GetName(), player_tap->getLevel(), uAreaName.c_str(), pVictim->GetName(), pVictim->getLevel());
+					}
+				}
                 if (BattleGround* bg = playerVictim->GetBattleGround())
                 {
                     bg->HandleKillPlayer(playerVictim, player_tap);

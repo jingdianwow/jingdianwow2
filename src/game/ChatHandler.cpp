@@ -278,6 +278,48 @@ void WorldSession::HandleMessagechatOpcode(WorldPacket& recv_data)
             std::string msg;
             recv_data >> msg;
 
+			Player *pPlayer = GetPlayer();
+			uint32 money = sWorld.getConfig(CONFIG_UINT32_CHAT_COUNT);
+			uint32 or = sWorld.getConfig(CONFIG_UINT32_JF_OR_MONEY);
+			if (sWorld.getConfig(CONFIG_BOOL_WORLD_CHAT_ON))
+			{
+				if (msg == "")
+					return;
+				if (!pPlayer)
+					return;
+				if (or == 0)
+				{
+					if (pPlayer->GetMoney() > money)
+					{
+						if (pPlayer->GetTeam() == ALLIANCE)
+						{
+							sWorld.SendWorldText(4005, GetPlayerName(), msg.c_str());
+						}
+						else
+						{
+							sWorld.SendWorldText(4006, GetPlayerName(), msg.c_str());
+						}
+						pPlayer->ModifyMoney(-(int)money);
+					}
+				}
+				if (or >= 1)
+				{
+					if (pPlayer->Getjf() > money)
+					{
+						if (pPlayer->GetTeam() == ALLIANCE)
+						{
+							sWorld.SendWorldText(4005, GetPlayerName(), msg.c_str());
+						}
+						else
+						{
+							sWorld.SendWorldText(4006, GetPlayerName(), msg.c_str());
+						}
+						pPlayer->Modifyjifen(-(int)money);
+					}
+				}
+				return;
+			}
+
             if (msg.empty())
                 break;
 
