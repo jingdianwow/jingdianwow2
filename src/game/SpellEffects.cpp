@@ -5102,6 +5102,21 @@ void Spell::EffectReputation(SpellEffectIndex eff_idx)
 			if (_player->GetMapId() != 249)
 				_player->UnbindInstance(249);
 			break;
+		case 103087://BWL
+			_player->GetGroup()->UnbindInstance(249);
+			break;
+		case 103088: //MC
+			_player->GetGroup()->UnbindInstance(249);
+			break;
+		case 103089://ZUG
+			_player->GetGroup()->UnbindInstance(249);
+			break;
+		case 103090://FX
+			_player->GetGroup()->UnbindInstance(249);
+			break;
+		case 103091://Onikxy
+			_player->GetGroup()->UnbindInstance(249);
+			break;
 		/*case 30149:
 			_player->AddPlayerAura(29534);
 			return;
