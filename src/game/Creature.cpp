@@ -1232,6 +1232,21 @@ void Creature::SelectLevel(const CreatureInfo* cinfo, float percentHealth /*= 10
 
 	switch (GetMapId())
 	{
+	case 429:
+		health *= _GetHealthMod(GetCreatureInfo()->Rank, 429);
+		break;
+	case 289:
+		health *= _GetHealthMod(GetCreatureInfo()->Rank, 289);
+		break;
+	case 329:
+		health *= _GetHealthMod(GetCreatureInfo()->Rank, 329);
+		break;
+	case 230:
+		health *= _GetHealthMod(GetCreatureInfo()->Rank, 230);
+		break;
+	case 229:
+		health *= _GetHealthMod(GetCreatureInfo()->Rank, 229);
+		break;
 	case 309:
 		health *= _GetHealthMod(GetCreatureInfo()->Rank, 309);
 		break;
@@ -1311,6 +1326,21 @@ void Creature::SelectLevel(const CreatureInfo* cinfo, float percentHealth /*= 10
 	float damagemod = 0.0f;
 	switch (GetMapId())
 	{
+	case 429:
+		damagemod = _GetDamageMod(GetCreatureInfo()->Rank, 429);
+		break;
+	case 289:
+		damagemod = _GetDamageMod(GetCreatureInfo()->Rank, 289);
+		break;
+	case 329:
+		damagemod = _GetDamageMod(GetCreatureInfo()->Rank, 329);
+		break;
+	case 230:
+		damagemod = _GetDamageMod(GetCreatureInfo()->Rank, 230);
+		break;
+	case 229:
+		damagemod = _GetDamageMod(GetCreatureInfo()->Rank, 229);
+		break;
 	case 309:
 		damagemod = _GetDamageMod(GetCreatureInfo()->Rank, 309);
 		break;
@@ -1359,6 +1389,96 @@ float Creature::_GetHealthMod(int32 Rank, uint32 mapid)
 {
 	switch (mapid)
 	{
+		case 429:
+		{
+				switch (Rank)
+				{
+				case CREATURE_ELITE_NORMAL:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_HP_DM);
+				case CREATURE_ELITE_ELITE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_DM);
+				case CREATURE_ELITE_RAREELITE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_HP_DM);
+				case CREATURE_ELITE_WORLDBOSS:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_HP_DM);
+				case CREATURE_ELITE_RARE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_HP_DM);
+				default:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_DM);
+				}
+		}break;
+		case 289:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_HP_SM);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_SM);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_HP_SM);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_HP_SM);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_HP_SM);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_SM);
+					}
+		}break;
+		case 329:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_HP_STSM);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_STSM);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_HP_STSM);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_HP_STSM);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_HP_STSM);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_STSM);
+					}
+		}break;
+		case 230:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_HP_BD);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_BD);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_HP_BD);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_HP_BD);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_HP_BD);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_BD);
+					}
+		}break;
+		case 229:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_HP_BS);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_BS);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_HP_BS);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_HP_BS);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_HP_BS);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_HP_BS);
+					}
+		}break;
 		case 309:
 		{
            switch (Rank)
@@ -1528,6 +1648,96 @@ float Creature::_GetDamageMod(int32 Rank, uint32 mapid)
 {
 	switch (mapid)
 	{
+		case 429:
+		{
+				switch (Rank)
+				{
+				case CREATURE_ELITE_NORMAL:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_DAMAGE_DM);
+				case CREATURE_ELITE_ELITE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_DM);
+				case CREATURE_ELITE_RAREELITE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_DAMAGE_DM);
+				case CREATURE_ELITE_WORLDBOSS:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_DAMAGE_DM);
+				case CREATURE_ELITE_RARE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_DAMAGE_DM);
+				default:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_DM);
+				}
+		}break;
+		case 289:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_DAMAGE_SM);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_SM);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_DAMAGE_SM);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_DAMAGE_SM);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_DAMAGE_SM);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_SM);
+					}
+		}break;
+		case 329:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_DAMAGE_STSM);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_STSM);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_DAMAGE_STSM);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_DAMAGE_STSM);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_DAMAGE_STSM);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_STSM);
+					}
+		}break;
+		case 230:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_DAMAGE_BD);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_BD);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_DAMAGE_BD);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_DAMAGE_BD);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_DAMAGE_BD);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_BD);
+					}
+		}break;
+		case 229:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_DAMAGE_BS);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_BS);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_DAMAGE_BS);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_DAMAGE_BS);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_DAMAGE_BS);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_DAMAGE_BS);
+					}
+		}break;
 		case 309:
 		{
            switch (Rank)
@@ -1697,6 +1907,96 @@ float Creature::_GetSpellDamageMod(int32 Rank, uint32 mapid)
 {
 	switch (mapid)
 	{
+		case 429:
+		{
+				switch (Rank)
+				{
+				case CREATURE_ELITE_NORMAL:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_SPELLDAMAGE_DM);
+				case CREATURE_ELITE_ELITE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_DM);
+				case CREATURE_ELITE_RAREELITE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_SPELLDAMAGE_DM);
+				case CREATURE_ELITE_WORLDBOSS:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_SPELLDAMAGE_DM);
+				case CREATURE_ELITE_RARE:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_SPELLDAMAGE_DM);
+				default:
+					return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_DM);
+				}
+		}break;
+		case 289:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_SPELLDAMAGE_SM);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_SM);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_SPELLDAMAGE_SM);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_SPELLDAMAGE_SM);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_SPELLDAMAGE_SM);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_SM);
+					}
+		}break;
+		case 329:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_SPELLDAMAGE_STSM);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_STSM);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_SPELLDAMAGE_STSM);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_SPELLDAMAGE_STSM);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_SPELLDAMAGE_STSM);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_STSM);
+					}
+		}break;
+		case 230:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_SPELLDAMAGE_BD);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_BD);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_SPELLDAMAGE_BD);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_SPELLDAMAGE_BD);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_SPELLDAMAGE_BD);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_BD);
+					}
+		}break;
+		case 229:
+		{
+					switch (Rank)
+					{
+					case CREATURE_ELITE_NORMAL:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_NORMAL_SPELLDAMAGE_BS);
+					case CREATURE_ELITE_ELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_BS);
+					case CREATURE_ELITE_RAREELITE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RAREELITE_SPELLDAMAGE_BS);
+					case CREATURE_ELITE_WORLDBOSS:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_WORLDBOSS_SPELLDAMAGE_BS);
+					case CREATURE_ELITE_RARE:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_RARE_SPELLDAMAGE_BS);
+					default:
+						return sWorld.getConfig(CONFIG_FLOAT_RATE_CREATURE_ELITE_ELITE_SPELLDAMAGE_BS);
+					}
+		}break;
 		case 309:
 		{
            switch (Rank)

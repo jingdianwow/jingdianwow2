@@ -1560,3 +1560,103 @@ BG.Kill.Item.Probability = 25
 #    奥尼克希亚副本
 ##############################
 Onyxia'sLair.On = 1
+
+
+######  五人副本血量控制######
+
+#####厄运副本
+Rate.Creature.Normal.HP_DM = 1
+Rate.Creature.Elite.Elite.HP_DM = 1
+Rate.Creature.Elite.RAREELITE.HP_DM = 1
+Rate.Creature.Elite.WORLDBOSS.HP_DM = 1
+Rate.Creature.Elite.RARE.HP_DM = 1
+#####通灵副本
+Rate.Creature.Normal.HP_SM = 1
+Rate.Creature.Elite.Elite.HP_SM = 1
+Rate.Creature.Elite.RAREELITE.HP_SM = 1
+Rate.Creature.Elite.WORLDBOSS.HP_SM = 1
+Rate.Creature.Elite.RARE.HP_SM = 1
+#####斯坦索姆副本
+Rate.Creature.Normal.HP_STSM = 1
+Rate.Creature.Elite.Elite.HP_STSM = 1
+Rate.Creature.Elite.RAREELITE.HP_STSM = 1
+Rate.Creature.Elite.WORLDBOSS.HP_STSM = 1
+Rate.Creature.Elite.RARE.HP_STSM = 1
+#####黑石深渊副本
+Rate.Creature.Normal.HP_BD = 1
+Rate.Creature.Elite.Elite.HP_BD = 1
+Rate.Creature.Elite.RAREELITE.HP_BD = 1
+Rate.Creature.Elite.WORLDBOSS.HP_BD = 1
+Rate.Creature.Elite.RARE.HP_BD = 1
+#####黑石塔副本
+Rate.Creature.Normal.HP_BS = 1
+Rate.Creature.Elite.Elite.HP_BS = 1
+Rate.Creature.Elite.RAREELITE.HP_BS = 1
+Rate.Creature.Elite.WORLDBOSS.HP_BS = 1
+Rate.Creature.Elite.RARE.HP_BS = 1
+
+######  五人副本物理伤害控制######
+
+#####厄运副本
+Rate.Creature.Normal.DAMAGE_DM = 1
+Rate.Creature.Elite.Elite.DAMAGE_DM = 1
+Rate.Creature.Elite.RAREELITE.DAMAGE_DM = 1
+Rate.Creature.Elite.WORLDBOSS.DAMAGE_DM = 1
+Rate.Creature.Elite.RARE.DAMAGE_DM = 1
+#####通灵副本
+Rate.Creature.Normal.DAMAGE_SM = 1
+Rate.Creature.Elite.Elite.DAMAGE_SM = 1
+Rate.Creature.Elite.RAREELITE.DAMAGE_SM = 1
+Rate.Creature.Elite.WORLDBOSS.DAMAGE_SM = 1
+Rate.Creature.Elite.RARE.DAMAGE_SM = 1
+#####斯坦索姆副本
+Rate.Creature.Normal.DAMAGE_STSM = 1
+Rate.Creature.Elite.Elite.DAMAGE_STSM = 1
+Rate.Creature.Elite.RAREELITE.DAMAGE_STSM = 1
+Rate.Creature.Elite.WORLDBOSS.DAMAGE_STSM = 1
+Rate.Creature.Elite.RARE.DAMAGE_STSM = 1
+#####黑石深渊副本
+Rate.Creature.Normal.DAMAGE_BD = 1
+Rate.Creature.Elite.Elite.DAMAGE_BD = 1
+Rate.Creature.Elite.RAREELITE.DAMAGE_BD = 1
+Rate.Creature.Elite.WORLDBOSS.DAMAGE_BD = 1
+Rate.Creature.Elite.RARE.DAMAGE_BD = 1
+#####黑石塔副本
+Rate.Creature.Normal.DAMAGE_BS = 1
+Rate.Creature.Elite.Elite.DAMAGE_BS = 1
+Rate.Creature.Elite.RAREELITE.DAMAGE_BS = 1
+Rate.Creature.Elite.WORLDBOSS.DAMAGE_BS = 1
+Rate.Creature.Elite.RARE.DAMAGE_BS = 1
+
+######  五人副本法术伤害控制######
+
+#####厄运副本
+Rate.Creature.Normal.SPELLDAMAGE_DM = 1
+Rate.Creature.Elite.Elite.SPELLDAMAGE_DM = 1
+Rate.Creature.Elite.RAREELITE.SPELLDAMAGE_DM = 1
+Rate.Creature.Elite.WORLDBOSS.SPELLDAMAGE_DM = 1
+Rate.Creature.Elite.RARE.SPELLDAMAGE_DM = 1
+#####通灵副本
+Rate.Creature.Normal.SPELLDAMAGE_SM = 1
+Rate.Creature.Elite.Elite.SPELLDAMAGE_SM = 1
+Rate.Creature.Elite.RAREELITE.SPELLDAMAGE_SM = 1
+Rate.Creature.Elite.WORLDBOSS.SPELLDAMAGE_SM = 1
+Rate.Creature.Elite.RARE.SPELLDAMAGE_SM = 1
+#####斯坦索姆副本
+Rate.Creature.Normal.SPELLDAMAGE_STSM = 1
+Rate.Creature.Elite.Elite.SPELLDAMAGE_STSM = 1
+Rate.Creature.Elite.RAREELITE.SPELLDAMAGE_STSM = 1
+Rate.Creature.Elite.WORLDBOSS.SPELLDAMAGE_STSM = 1
+Rate.Creature.Elite.RARE.SPELLDAMAGE_STSM = 1
+#####黑石深渊副本
+Rate.Creature.Normal.SPELLDAMAGE_BD = 1
+Rate.Creature.Elite.Elite.SPELLDAMAGE_BD = 1
+Rate.Creature.Elite.RAREELITE.SPELLDAMAGE_BD = 1
+Rate.Creature.Elite.WORLDBOSS.SPELLDAMAGE_BD = 1
+Rate.Creature.Elite.RARE.SPELLDAMAGE_BD = 1
+#####黑石塔副本
+Rate.Creature.Normal.SPELLDAMAGE_BS = 1
+Rate.Creature.Elite.Elite.SPELLDAMAGE_BS = 1
+Rate.Creature.Elite.RAREELITE.SPELLDAMAGE_BS = 1
+Rate.Creature.Elite.WORLDBOSS.SPELLDAMAGE_BS = 1
+Rate.Creature.Elite.RARE.SPELLDAMAGE_BS = 1
